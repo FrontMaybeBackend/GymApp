@@ -7,3 +7,7 @@ controllers:
 navbar:
     path:       /
     controller: App\Controller\NavbarController::index
+
+login:
+    path:
+        controller: App\Controller\LoginController::index

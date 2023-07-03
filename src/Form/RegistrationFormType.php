@@ -76,7 +76,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('button', SubmitType::class,[
+            ->add('register', SubmitType::class,[
                 'attr'=>[
                     'class'=>'btn btn-dark',
                 ],

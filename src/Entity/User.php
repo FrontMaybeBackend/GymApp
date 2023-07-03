@@ -30,7 +30,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
     #[ORM\ManyToOne(inversedBy: 'training')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Training $training_id = null;
 
     #[ORM\Column(length: 255)]
@@ -38,6 +38,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
+
 
     public function getId(): ?int
     {
@@ -133,15 +134,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function isVerified(): bool
-    {
-        return $this->isVerified;
-    }
 
     public function setIsVerified(bool $isVerified): static
     {
         $this->isVerified = $isVerified;
 
         return $this;
+    }
+
+    public function isIsVerified(): ?bool
+    {
+        return $this->is_verified;
     }
 }

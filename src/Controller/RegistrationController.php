@@ -55,7 +55,7 @@ class RegistrationController extends AbstractController
             );
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('navbar');
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('registration/register.html.twig', [
@@ -64,7 +64,7 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/verify/email', name: 'app_verify_email')]
-    public function verifyUserEmail(Request $request, TranslatorInterface $translator, UserRepository $userRepository): Response
+    public function verifyUserEmail(Request $request, TranslatorInterface $translator, UserRepository $userRepository,EntityManagerInterface $entityManager): Response
     {
         $id = $request->query->get('id');
 
@@ -79,8 +79,14 @@ class RegistrationController extends AbstractController
         }
 
         // validate email confirmation link, sets User::isVerified=true and persists
+
         try {
             $this->emailVerifier->handleEmailConfirmation($request, $user);
+
+            $user ->setIsVerified(true);
+
+            $entityManager->persist($user);
+            $entityManager->flush();
         } catch (VerifyEmailExceptionInterface $exception) {
             $this->addFlash('verify_email_error', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
 

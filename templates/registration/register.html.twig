@@ -10,7 +10,6 @@
     <div class="d-flex vh-100 justify-content-center align-items-center no-wrap">
     {{ form_errors(registrationForm) }}
         {{ form_start(registrationForm) }}
-       {{ form_errors(registrationForm.username) }}
                     {{ form_row(registrationForm.username) }}
                     {{ form_row(registrationForm.email) }}
                     {{ form_row(registrationForm.plainPassword, {

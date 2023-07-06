@@ -15,3 +15,7 @@ login:
 app_logout:
     path: /logout
     methods: POST
+
+app_display:
+    path:
+        controller: App\Controller\DisplayController::index

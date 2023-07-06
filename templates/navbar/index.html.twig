@@ -6,6 +6,10 @@
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
+
+    {% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    {% endblock %}
 </head>
 <body>
 <!-- Navbar -->
@@ -50,17 +54,25 @@
                        Calendar
                     </a>
                 </li>
+                <li class="nav-item text-center mx-2 mx-lg-1">
+                    <a class="nav-link" href="{{ path('app_display') }}">
+                        <div>
+                            <i class="far fa-envelope fa-lg mb-1"></i>
+                        </div>
+                        Users
+                    </a>
+                </li>
                 <li class="nav-item dropdown text-center mx-2 mx-lg-1">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-mdb-toggle="dropdown"
                        aria-expanded="false">
                         <div>
                             <i class="far fa-envelope fa-lg mb-1"></i>
                         </div>
-                        Friends
+                        {{ app.user.username }}
                     </a>
                     <!-- Dropdown menu -->
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Friends</a></li>
                         <li><a class="dropdown-item" href="#">Another action</a></li>
                         <li>
                             <hr class="dropdown-divider" />
@@ -71,6 +83,7 @@
                     </ul>
                 </li>
             </ul>
+
             <!-- Left links -->
 
             <!-- Right links -->
@@ -83,8 +96,9 @@
                         </div>
                         Messages
                     </a>
-                </li><li class="nav-item text-center mx-2 mx-lg-1">
+                </li>
 
+                <li class="nav-item text-center mx-2 mx-lg-1">
                     {% if app.user %}
                     <form method="post"  action="{{path('app_logout')}}">
                         <button type="submit">Logout</button>
@@ -111,6 +125,7 @@
     </div>
 
     <!-- Container wrapper -->
+    </div>
 </nav>
 <!-- Navbar -->
 </body>

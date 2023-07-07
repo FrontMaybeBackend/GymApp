@@ -1,26 +1,23 @@
-{% extends 'base.html.twig' %}
-{% block title %}Hello DisplayController!{% endblock %}
+
 {% block body %}
-    
+    {% include 'navbar/index.html.twig' %}
 
-    <div class="example-wrapper">
-        <table>
-            <thead>
+    <table class="table align-middle mb-0 bg-white">
+        <thead class="bg-light">
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Add</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
             <tr>
-                <th>ID</th>
-                <th>Nazwa użytkownika</th>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td><button class="btn btn-success">+</button></td>
             </tr>
-            </thead>
-            <tbody>
-            {% for user in users %}
-                <tr>
-                    <td>{{ user.id }}</td>
-                    <td>{{ user.username }}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
-
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

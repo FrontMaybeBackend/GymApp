@@ -62,28 +62,6 @@
                         Users
                     </a>
                 </li>
-                {% if app.user %}
-                <li class="nav-item dropdown text-center mx-2 mx-lg-1">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-mdb-toggle="dropdown"
-                       aria-expanded="false">
-                        <div>
-                            <i class="far fa-envelope fa-lg mb-1"></i>
-                        </div>
-                        {{ app.user.username }}
-                    </a>
-                    <!-- Dropdown menu -->
-                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Friends</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </li>
-                    </ul>
-                </li>
-                {%  endif %}
             </ul>
 
             <!-- Left links -->
@@ -101,13 +79,22 @@
                     </a>
                     {%  endif %}
                 </li>
-
+                {% if app.user %}
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ app.user.username }}
+                    </button>
+                    <ul class="dropdown-menu w-25" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <form method="post"  action="{{path('app_logout')}}">
+                                <button class="btn" type="submit">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+                {% else %}
                 <li class="nav-item text-center mx-2 mx-lg-1">
-                    {% if app.user %}
-                    <form method="post"  action="{{path('app_logout')}}">
-                        <button class="btn btn-info" type="submit">Logout</button>
-                    </form>
-                    {% else %}
                     <a class="nav-link" href="{{  path('app_login') }}">
                         <div>
                             <i class="fas fa-bell fa-lg mb-1"></i>
@@ -131,6 +118,7 @@
     <!-- Container wrapper -->
     </div>
 </nav>
+
 <!-- Navbar -->
 </body>
 </html>

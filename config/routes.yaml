@@ -19,3 +19,7 @@ app_logout:
 app_display:
     path:
         controller: App\Controller\DisplayController::index
+
+app_profile:
+    path:
+        controller: App\Controller\DisplayController::index

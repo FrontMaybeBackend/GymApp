@@ -13,9 +13,9 @@ class ProfileController extends AbstractController
     #[Route('/profile/{id}', name: 'app_profile')]
     public function show(EntityManagerInterface $entityManager, int $id): Response
     {
-        $user = $entityManager -> getRepository(User::class)->findBy($id);
+        $profile = $entityManager -> getRepository(User::class)->find($id);
 
-        if (!$user) {
+        if (!$profile) {
             throw $this->createNotFoundException(
                 'No product found for id '.$id
             );
@@ -23,7 +23,7 @@ class ProfileController extends AbstractController
 
 
         return $this->render('profile/index.html.twig', [
-            'profile' => 'userprofile',
+            'profile' => $profile,
         ]);
     }
 }

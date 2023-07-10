@@ -21,5 +21,6 @@ app_display:
         controller: App\Controller\DisplayController::index
 
 app_profile:
-    path:
-        controller: App\Controller\DisplayController::index
+    path: '/profile/{id}'
+    controller: App\Controller\ProfileController::show
+

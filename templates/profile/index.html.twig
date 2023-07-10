@@ -5,12 +5,11 @@
 
    {% block body %}
        {% include 'navbar/index.html.twig' %}
-       <div>
+       <div class="container-fluid  p-2  m-2 border-start border-bottom border-black  border-4 w-25 ">
            <strong>Name:</strong> {{ profile.username }}
-       </div>
-
-       <div>
+           <div>
            <strong>Email:</strong> {{ profile.email }}
+           </div>
        </div
    {% endblock %}
 

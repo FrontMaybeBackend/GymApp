@@ -6,27 +6,17 @@
    {% block body %}
        {% include 'navbar/index.html.twig' %}
 
-           <div class="container p-2  m-2 border-start border-bottom border-black  border-4 w-25">
-               <div class="row align-items-start">
-                   <div class="col-6 offset-1">
-                       <strong>Name:</strong> {{ profile.username }}
+
+       <div class="container p-2  m-2 border-start border-bottom border-black  border-4">
+           <div class="row align-items-start">
+               <div class="col">
+                   <div>
+                       <strong>{{ profile.username }}</strong>
                    </div>
-                   <div class="col-6 offset-1">
-                       <strong>Email:</strong> {{ profile.email }}
+                   <div>
+                       <strong>{{ profile.email }}</strong>
                    </div>
                </div>
-           </div>
-
-       <div class="container row border border-black border-3">
-           <h1>Settings:</h1>
-           <label>Username:</label>
-           <input class="input-group"> </input>
-           <label>Email:</label>
-           <input class="input-group">
-           <label>Password:</label>
-           <input class="input-group">
-           <label>Description:</label>
-           <input class="input-group text-area">
        </div>
 
    {% endblock %}

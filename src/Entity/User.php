@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -39,6 +40,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $workout = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $training_days = null;
 
 
     public function getId(): ?int
@@ -146,5 +156,41 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function isVerified(): ?bool
     {
         return $this->isVerified;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): static
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getWorkout(): ?string
+    {
+        return $this->workout;
+    }
+
+    public function setWorkout(?string $workout): static
+    {
+        $this->workout = $workout;
+
+        return $this;
+    }
+
+    public function getTrainingDays(): ?int
+    {
+        return $this->training_days;
+    }
+
+    public function setTrainingDays(?int $training_days): static
+    {
+        $this->training_days = $training_days;
+
+        return $this;
     }
 }

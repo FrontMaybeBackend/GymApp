@@ -46,8 +46,9 @@ class ProfileController extends AbstractController
             $user->setUsername($data['username']);
             $user->setPassword(password_hash($data['password'],PASSWORD_DEFAULT));
             $user->setEmail($data['email']);
-
-            //dodac opis do bazy danych, numer treningow i rodzaj
+            $user->setDescription($data['description']);
+            $user->setWorkout($data['workout']);
+            $user->setTrainingDays($data['trainingDays']);
 
             $entityManager->persist($user);
             $entityManager->flush();

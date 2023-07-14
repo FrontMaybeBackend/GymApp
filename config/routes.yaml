@@ -16,11 +16,11 @@ app_logout:
     path: /logout
     methods: POST
 
-app_display:
+app_user_profile_index:
     path:
-        controller: App\Controller\DisplayController::index
+        controller: App\Controller\UserProfileController:index
 
-app_profile:
-    path: '/profile/{id}'
-    controller: App\Controller\ProfileController::show
+app_user_profile_show:
+    path: '/{id}'
+    controller: App\Controller\UserProfileController::show
 

@@ -55,7 +55,7 @@
                     </a>
                 </li>
                 <li class="nav-item text-center mx-2 mx-lg-1">
-                    <a class="nav-link" href="{{ path('app_display') }}">
+                    <a class="nav-link" href="{{ path('app_user_profile_index') }}">
                         <div>
                             <i class="far fa-envelope fa-lg mb-1"></i>
                         </div>
@@ -86,7 +86,7 @@
                     </button>
                     <ul class="dropdown-menu w-25" aria-labelledby="dropdownMenuButton1">
                         <li>
-                            <a class="dropdown-item" href="{{ path('app_profile', { id: app.user.id }) }}">Profile</a>
+                            <a class="dropdown-item" href="{{ path('app_user_profile_show', { id: app.user.id }) }}">Profile</a>
                         </li>
 
                         <li>

@@ -27,7 +27,7 @@
                 <td>{{ user.workout }}</td>
                 <td>{{ user.trainingDays }}</td>
                 <td>
-                    <a href="{{ path('app_user_profile_show', {'id': user.id}) }}">show</a>
+                    <a href="{{ path('app_user_profile_show', {'username': user.username}) }}">show</a>
                     <a href="{{ path('app_user_profile_edit', {'id': user.id}) }}">edit</a>
                 </td>
             </tr>

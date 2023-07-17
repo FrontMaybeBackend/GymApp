@@ -21,6 +21,6 @@ app_user_profile_index:
         controller: App\Controller\UserProfileController:index
 
 app_user_profile_show:
-    path: '/{id}'
+    path: '/{username}'
     controller: App\Controller\UserProfileController::show
 

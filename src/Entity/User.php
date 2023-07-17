@@ -50,6 +50,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(nullable: true)]
     private ?int $training_days = null;
 
+    #[ORM\Column(type: Types::BLOB, nullable: true)]
+    private $avatar = null;
+
 
     public function getId(): ?int
     {
@@ -190,6 +193,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setTrainingDays(?int $training_days): static
     {
         $this->training_days = $training_days;
+
+        return $this;
+    }
+
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar($avatar): static
+    {
+        $this->avatar = $avatar;
 
         return $this;
     }

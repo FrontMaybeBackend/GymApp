@@ -21,6 +21,7 @@ class UserProfileController extends AbstractController
         ]);
     }
 
+
     #[Route('/user/profile/{username}', name: 'app_user_profile_show', methods: ['GET'])]
     public function show(User $user): Response
     {
@@ -36,6 +37,10 @@ class UserProfileController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+           // $file =$form['avatar']->getData();
+            //$file->move($directory,$avatars);
+
             $user->setPassword(password_hash($user->getPassword(),PASSWORD_DEFAULT));
             $userRepository->save($user, true);
 

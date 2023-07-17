@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -21,6 +22,7 @@ class UserType extends AbstractType
             ->add('email', EmailType::class)
             ->add('password', PasswordType::class)
             ->add('description', TextareaType::class)
+            ->add('avatar',FileType::class)
             ->add('workout', ChoiceType::class, [
                 'choices' => [
                     'Workout' => '',
@@ -40,7 +42,7 @@ class UserType extends AbstractType
                     '7' => 7,
                 ],
             ]);
-        ;
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void

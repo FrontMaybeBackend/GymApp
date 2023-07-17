@@ -36,12 +36,13 @@ class UserProfileController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user->setPassword(password_hash($user->getPassword(),PASSWORD_DEFAULT));
             $userRepository->save($user, true);
 
             return $this->redirectToRoute('app_user_profile_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('user_profile/edit.html.twig', [
+        return $this->render('user_profile/edit.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);

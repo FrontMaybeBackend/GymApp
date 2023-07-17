@@ -24,9 +24,9 @@ class UserType extends AbstractType
             ->add('workout', ChoiceType::class, [
                 'choices' => [
                     'Workout' => '',
-                    'Calisthenics' => 1,
-                    'Powerlifting' => 2,
-                    'Bodybuilding' => 3,
+                    'Calisthenics' => 'Calisthenics',
+                    'Powerlifting' => 'Powerlifting',
+                    'Bodybuilding' => 'Bodybuilding',
                 ],
             ])
             ->add('trainingDays', ChoiceType::class, [

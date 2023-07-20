@@ -22,7 +22,9 @@ class UserType extends AbstractType
             ->add('email', EmailType::class)
             ->add('password', PasswordType::class)
             ->add('description', TextareaType::class)
-            ->add('avatar',FileType::class)
+            ->add('avatar',FileType::class,[
+                'data_class'=>null,
+            ])
             ->add('workout', ChoiceType::class, [
                 'choices' => [
                     'Workout' => '',

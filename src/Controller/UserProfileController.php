@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 #[Route('/user/profile')]
 class UserProfileController extends AbstractController
@@ -38,8 +39,12 @@ class UserProfileController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-           // $file =$form['avatar']->getData();
-            //$file->move($directory,$avatars);
+            $name = "avatars";
+            $directory = 'storage/uploads/';
+            $file =$form['avatar']->getData();
+            $file->move($directory,$name);
+
+
 
             $user->setPassword(password_hash($user->getPassword(),PASSWORD_DEFAULT));
             $userRepository->save($user, true);

@@ -50,7 +50,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(nullable: true)]
     private ?int $training_days = null;
 
-    #[ORM\Column(type: Types::BLOB, nullable: true)]
+    #[ORM\Column(type: Types::STRING, nullable: true)]
     private $avatar = null;
 
 
@@ -202,7 +202,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->avatar;
     }
 
-    public function setAvatar($avatar): static
+    public function setAvatar(string $avatar): self
     {
         $this->avatar = $avatar;
 

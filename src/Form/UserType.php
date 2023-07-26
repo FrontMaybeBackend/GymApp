@@ -23,7 +23,8 @@ class UserType extends AbstractType
             ->add('password', PasswordType::class)
             ->add('description', TextareaType::class)
             ->add('avatar',FileType::class,[
-                'data_class'=>null,
+                'label'=>'avatar (IMG FILE)',
+                'mapped'=>false,
             ])
             ->add('workout', ChoiceType::class, [
                 'choices' => [

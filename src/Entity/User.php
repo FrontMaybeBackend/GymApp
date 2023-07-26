@@ -50,8 +50,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(nullable: true)]
     private ?int $training_days = null;
 
-    #[ORM\Column(type: Types::STRING, nullable: true)]
-    private $avatar = null;
+    #[ORM\Column(type: Types::STRING)]
+    private ?string $avatar = null;
 
 
     public function getId(): ?int
@@ -197,7 +197,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getAvatar()
+    public function getAvatar(): string
     {
         return $this->avatar;
     }

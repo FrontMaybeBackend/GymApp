@@ -27,8 +27,12 @@ class UserProfileController extends AbstractController
     #[Route('/user/profile/{username}', name: 'app_user_profile_show', methods: ['GET'])]
     public function show(User $user): Response
     {
+
+        $getAvatar = $user->getAvatar();
+        $getFullPath = $this->getParameter('avatars_directory'). '/' . $getAvatar;
         return $this->render('user_profile/show.html.twig', [
             'user' => $user,
+            'avatar'=>$getFullPath,
         ]);
     }
 
@@ -54,7 +58,7 @@ class UserProfileController extends AbstractController
                         $newFilename
                     );
                 } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
+
                 }
 
                 $user->setAvatar($newFilename);

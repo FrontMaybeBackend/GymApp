@@ -26,6 +26,7 @@ class UserType extends AbstractType
             ->add('avatar',FileType::class,[
                 'label'=>'avatar (IMG FILE)',
                 'mapped'=>false,
+                'required'=>false,
                 'constraints'=>[
                     new Image([
                         'minWidth' => 50,

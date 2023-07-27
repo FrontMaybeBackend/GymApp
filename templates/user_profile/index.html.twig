@@ -22,7 +22,15 @@
         {% for user in users %}
             <tr>
                 <td>{{ user.id }}</td>
-                <td> <img src="{{  asset('uploads/avatars/' ~ user.avatar) }}" alt="Avatar"> </td>
+
+                <td>
+                    {%  if user.avatar%}
+                    <img src="{{  asset('uploads/avatars/' ~ user.avatar) }}" alt="Avatar">
+                    {%  else %}
+                        <p>Brak</p>
+                    {% endif %}
+                </td>
+
                 <td>{{ user.username }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.description }}</td>

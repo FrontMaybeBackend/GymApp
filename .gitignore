@@ -24,4 +24,6 @@
 /public/build/
 npm-debug.log
 yarn-error.log
+
+/public/uploads/avatars
 ###< symfony/webpack-encore-bundle ###

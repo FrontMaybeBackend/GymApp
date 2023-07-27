@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Validator\Constraints\Image;
 
 class UserType extends AbstractType
 {
@@ -25,6 +26,14 @@ class UserType extends AbstractType
             ->add('avatar',FileType::class,[
                 'label'=>'avatar (IMG FILE)',
                 'mapped'=>false,
+                'constraints'=>[
+                    new Image([
+                        'minWidth' => 50,
+                        'maxWidth' => 100,
+                        'minHeight' => 50,
+                        'maxHeight' => 100,
+                    ])
+                ]
             ])
             ->add('workout', ChoiceType::class, [
                 'choices' => [

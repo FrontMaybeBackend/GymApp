@@ -24,3 +24,7 @@ app_user_profile_show:
     path: '/{username}'
     controller: App\Controller\UserProfileController::show
 
+app_starter_page:
+    path:
+        controller: App\Controller\StarterPageController::index
+

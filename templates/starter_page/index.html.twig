@@ -44,4 +44,37 @@
     </div>
     </div>
 </div>
+
+<div class="container p-3 ">
+    <p>Statistics:</p>
+    <div class="row">
+        <div class="col">
+            <div class="card w-75 statistics">
+                <img class="card-img-top rounded-circle" src="{{  asset('storage/gymtraining.jpg') }}" height="150px" alt="Training">
+                <div class="card-body">
+                    <h5 class="card-title text-white">USERS</h5>
+                    <p class="card-text ">{{ numberOfUsers }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card w-75 statistics">
+                <img class="card-img-top" src="{{  asset('storage/gymtraining.jpg') }}" height="150px" alt="Training">
+                <div class="card-body">
+                    <h5 class="card-title text-white">PROGRAMS</h5>
+                    <p class="card-text ">{{ numberOfTrainings }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card w-75 statistics">
+                <img class="card-img-top" src="{{  asset('storage/gymtraining.jpg') }}" height="150px" alt="Training">
+                <div class="card-body">
+                    <h5 class="card-title text-white">PROGRAMS</h5>
+                    <p class="card-text ">level!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

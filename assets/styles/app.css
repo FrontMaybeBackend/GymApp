@@ -14,4 +14,10 @@ p{
 
 .card{
     border: 0;
+
 }
+
+.statistics{
+    flex-direction: row;
+}
+

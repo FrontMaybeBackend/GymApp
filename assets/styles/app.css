@@ -1,5 +1,17 @@
 body {
-    background-color: white;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,0.936186974789916) 0%, rgba(9,9,121,1) 42%, rgba(1,81,97,0.9810049019607843) 100%);
     font-family:Bebas Neue,'cursive';
 }
 
+p{
+    color: white;
+}
+
+.card-body{
+    background-color: black;
+}
+
+.card{
+    border: 0;
+}

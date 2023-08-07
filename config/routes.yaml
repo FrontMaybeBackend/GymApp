@@ -28,3 +28,10 @@ app_starter_page:
     path:
         controller: App\Controller\StarterPageController::index
 
+app_friends:
+    path:
+        controller: App\Controller\FriendsController::index
+
+app_add_friends:
+    path:
+        controller: App\Controller\FriendsController::add

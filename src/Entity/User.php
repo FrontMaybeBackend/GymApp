@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\ClassMetadata;
@@ -53,6 +55,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: Types::STRING,nullable: true)]
     private ?string $avatar = null;
+
+    #[ORM\ManyToMany(targetEntity: Friends::class, mappedBy: 'user')]
+    private Collection $friends;
+
+    public function __construct()
+    {
+        $this->friends = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -209,6 +219,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Friends>
+     */
+    public function getFriends(): Collection
+    {
+        return $this->friends;
+    }
+
+    public function addFriend(Friends $friend): static
+    {
+        if (!$this->friends->contains($friend)) {
+            $this->friends->add($friend);
+            $friend->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFriend(Friends $friend): static
+    {
+        if ($this->friends->removeElement($friend)) {
+            $friend->removeUser($this);
+        }
+
+        return $this;
+    }
+
+
+
 
 
 }

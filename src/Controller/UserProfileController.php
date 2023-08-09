@@ -36,6 +36,8 @@ class UserProfileController extends AbstractController
         ]);
     }
 
+
+
     #[Route('/{id}/edit', name: 'app_user_profile_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, User $user, UserRepository $userRepository,SluggerInterface $slugger): Response
     {

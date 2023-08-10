@@ -22,6 +22,7 @@ app_user_profile_index:
 
 app_user_profile_show:
     path: '/{username}'
+    methods: GET
     controller: App\Controller\UserProfileController::show
 
 app_starter_page:
@@ -33,5 +34,6 @@ app_friends:
         controller: App\Controller\FriendsController::index
 
 app_add_friends:
-    path:
-        controller: App\Controller\FriendsController::add
+    path: '/{id}'
+    methods: POST
+    controller: App\Controller\FriendsController::add

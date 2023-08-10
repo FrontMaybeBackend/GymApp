@@ -39,6 +39,18 @@ class FriendsRepository extends ServiceEntityRepository
         }
     }
 
+    /*public function findFriends(int $id): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+        SELECT * FROM friends WHERE friends_id = user_id ';
+
+        $resultSet = $conn->executeQuery($sql,['id'=>$id]);
+
+        return $resultSet->fetchAllAssociative();
+    }
+    */
 //    /**
 //     * @return Friends[] Returns an array of Friends objects
 //     */

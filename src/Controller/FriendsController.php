@@ -25,14 +25,14 @@ class FriendsController extends AbstractController
         ]);
     }
 
-    #[Route('/friends/add/{username}', name:'app_add_friends', methods: ['POST'])]
-    public function add(Request $request, FriendsRepository $friendsRepository, UserRepository $userRepository, EntityManagerInterface $entityManager, $username): Response
+    #[Route('/friends/add/{id}', name:'app_add_friends', methods: ['POST'])]
+    public function add(Request $request, FriendsRepository $friendsRepository, UserRepository $userRepository, EntityManagerInterface $entityManager, $id): Response
     {
 
 
 
         if($request->isMethod('POST')){
-            $user = $userRepository->findOneBy(['username' =>  $username]);
+            $user = $userRepository->find($id);
             $friends = new Friends();
             $friends->addUser($user);
 
@@ -43,7 +43,7 @@ class FriendsController extends AbstractController
         }
 
         return $this->render('friends/index.html.twig', [
-            'friends'=>$friendsRepository->findAll(),
+            'friends'=>$friendsRepository->findFriends($id),
         ]);
 
     }

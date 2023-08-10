@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Friends;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\Exception;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -39,18 +40,21 @@ class FriendsRepository extends ServiceEntityRepository
         }
     }
 
-    /*public function findFriends(int $id): array
+    /**
+     * @throws Exception
+     */
+    public function findFriends(int $id): array
     {
         $conn = $this->getEntityManager()->getConnection();
 
         $sql = '
-        SELECT * FROM friends WHERE friends_id = user_id ';
+        SELECT username from user INNER JOIN friends_user ON user_id = id; ';
 
         $resultSet = $conn->executeQuery($sql,['id'=>$id]);
 
         return $resultSet->fetchAllAssociative();
     }
-    */
+
 //    /**
 //     * @return Friends[] Returns an array of Friends objects
 //     */

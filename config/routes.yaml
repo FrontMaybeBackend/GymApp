@@ -34,6 +34,6 @@ app_friends:
         controller: App\Controller\FriendsController::index
 
 app_add_friends:
-    path: '/{username}'
+    path: '/{id}'
     methods: POST
     controller: App\Controller\FriendsController::add

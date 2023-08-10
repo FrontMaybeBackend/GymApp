@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class FriendsController extends AbstractController
 {
     #[Route('/friends', name: 'app_friends')]
-    public function index(FriendsRepository $friendsRepository, int $id): Response
+    public function index(FriendsRepository $friendsRepository): Response
     {
 
         return $this->render('friends/index.html.twig', [
@@ -25,14 +25,14 @@ class FriendsController extends AbstractController
         ]);
     }
 
-    #[Route('/friends/add/{id}', name:'app_add_friends', methods: ['POST'])]
-    public function add(Request $request, FriendsRepository $friendsRepository, UserRepository $userRepository, EntityManagerInterface $entityManager, $id): Response
+    #[Route('/friends/add/{username}', name:'app_add_friends', methods: ['POST'])]
+    public function add(Request $request, FriendsRepository $friendsRepository, UserRepository $userRepository, EntityManagerInterface $entityManager, $username): Response
     {
 
 
 
         if($request->isMethod('POST')){
-            $user = $userRepository->find($id);
+            $user = $userRepository->findOneBy(['username' =>  $username]);
             $friends = new Friends();
             $friends->addUser($user);
 

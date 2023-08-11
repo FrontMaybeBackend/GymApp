@@ -67,4 +67,6 @@ class Friends
 
         return $this;
     }
+
+
 }

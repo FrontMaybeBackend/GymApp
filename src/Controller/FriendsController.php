@@ -29,16 +29,18 @@ class FriendsController extends AbstractController
     public function add(Request $request, FriendsRepository $friendsRepository, UserRepository $userRepository, EntityManagerInterface $entityManager, $id ,  $username,UserInterface $userMain): Response
     {
 
-
         if($request->isMethod('POST')){
+
+
 
             $user = $userRepository->findOneBy(['id' => $id, 'username' => $username]);
             $friends = new Friends();
             $friends->setUsername($username);
             $friends->addUser($user);
+            $user->addFriend($friends);
 
 
-
+            $entityManager->persist($user);
             $entityManager->persist($friends);
             $entityManager->flush();
 

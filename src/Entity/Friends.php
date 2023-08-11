@@ -15,8 +15,12 @@ class Friends
     #[ORM\Column]
     private ?int $id = null;
 
+
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'friends')]
     private Collection $user;
+
+    #[ORM\Column(length: 255)]
+    private ?string $username = null;
 
     public function __construct()
     {
@@ -48,6 +52,18 @@ class Friends
     public function removeUser(User $user): static
     {
         $this->user->removeElement($user);
+
+        return $this;
+    }
+
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(string $username): static
+    {
+        $this->username = $username;
 
         return $this;
     }

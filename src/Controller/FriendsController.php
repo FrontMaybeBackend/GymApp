@@ -25,15 +25,16 @@ class FriendsController extends AbstractController
         ]);
     }
 
-    #[Route('/friends/add/{id}', name:'app_add_friends', methods: ['POST'])]
-    public function add(Request $request, FriendsRepository $friendsRepository, UserRepository $userRepository, EntityManagerInterface $entityManager, $id): Response
+    #[Route('/friends/add/{id}/{username}', name:'app_add_friends', methods: ['POST'])]
+    public function add(Request $request, FriendsRepository $friendsRepository, UserRepository $userRepository, EntityManagerInterface $entityManager, $id , $username): Response
     {
 
 
 
         if($request->isMethod('POST')){
-            $user = $userRepository->find($id);
+            $user = $userRepository->findOneBy(['id' => $id, 'username' => $username]);
             $friends = new Friends();
+            $friends->setUsername($username);
             $friends->addUser($user);
 
             $entityManager->persist($friends);

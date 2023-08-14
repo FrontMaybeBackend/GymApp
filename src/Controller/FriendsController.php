@@ -34,13 +34,18 @@ class FriendsController extends AbstractController
 
 
             $user = $userRepository->findOneBy(['id' => $id, 'username' => $username]);
+
+            //sprawdza czy user istnieje
+            if(!$user){
+                return new Response('User not found', Response::HTTP_NOT_FOUND);
+            }
+
+
             $friends = new Friends();
             $friends->setUsername($username);
-            $friends->addUser($user);
-            $user->addFriend($friends);
+            $userMain->addFriend($friends);
 
-
-            $entityManager->persist($user);
+            $entityManager->persist($userMain);
             $entityManager->persist($friends);
             $entityManager->flush();
 

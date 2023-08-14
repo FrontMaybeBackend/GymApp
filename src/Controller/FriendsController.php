@@ -23,6 +23,8 @@ class FriendsController extends AbstractController
             'friends'=>$friendsRepository->findAll(),
 
         ]);
+
+
     }
 
     #[Route('/friends/add/{id}/{username}', name:'app_add_friends', methods: ['POST'])]
@@ -55,6 +57,27 @@ class FriendsController extends AbstractController
         return $this->render('friends/index.html.twig', [
             'friends'=>$friendsRepository->findFriends($id),
         ]);
+    }
+
+    #[Route('/friends/show',name:'app_friends_show',methods: 'GET')]
+    public function show(UserInterface $user, FriendsRepository $friendsRepository)
+    {
+        $logginUser = $user->getId();
+
+        $friendsData = [];
+
+        $results = $friendsRepository->findFriends($logginUser);
+
+        foreach($results as $result) {
+            $friendsData[] = [
+                'friends' => $result['username']
+            ];
+
+
+        }
+        return $this->render('friends/show.html.twig',[
+            'friends' => $friendsData
+            ]);
 
     }
 }

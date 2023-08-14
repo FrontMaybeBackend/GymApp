@@ -67,8 +67,6 @@ class FriendsController extends AbstractController
         $friendsData = [];
 
         $results = $friendsRepository->findFriends($loggedInUserId);
-        print_r($results);
-        print_r($loggedInUserId);
 
         foreach ($results as $result) {
             $friendsData[] = [

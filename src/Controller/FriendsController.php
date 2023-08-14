@@ -59,25 +59,26 @@ class FriendsController extends AbstractController
         ]);
     }
 
-    #[Route('/friends/show',name:'app_friends_show',methods: 'GET')]
+    #[Route('/friends/show', name: 'app_friends_show', methods: 'GET')]
     public function show(UserInterface $user, FriendsRepository $friendsRepository)
     {
-        $logginUser = $user->getId();
+        $loggedInUserId = $user->getId();
 
         $friendsData = [];
 
-        $results = $friendsRepository->findFriends($logginUser);
+        $results = $friendsRepository->findFriends($loggedInUserId);
+        print_r($results);
+        print_r($loggedInUserId);
 
-        foreach($results as $result) {
+        foreach ($results as $result) {
             $friendsData[] = [
-                'friends' => $result['username']
+                'friends' => $result['friend_username'] // Używamy poprawnej nazwy klucza
             ];
-
-
         }
-        return $this->render('friends/show.html.twig',[
-            'friends' => $friendsData
-            ]);
 
+        return $this->render('friends/show.html.twig', [
+            'friends' => $friendsData,
+        ]);
     }
+
 }

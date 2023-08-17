@@ -42,6 +42,11 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            //Alert with message
+            flash()
+                ->option('position','top-center')
+                ->addSuccess('Register successfully, now you can login');
+
             $entityManager->persist($user);
             $entityManager->flush();
 

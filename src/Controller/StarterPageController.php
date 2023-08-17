@@ -20,7 +20,6 @@ class StarterPageController extends AbstractController
         $trainings = $trainingRepository->findAll();
         $numberOfTrainings = count($trainings);
 
-
         return $this->render('starter_page/index.html.twig', [
             'controller_name' => 'StarterPageController',
             'numberOfUsers'=>$numberOfUsers,

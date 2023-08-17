@@ -50,7 +50,7 @@ class FriendsController extends AbstractController
             $entityManager->persist($userMain);
             $entityManager->persist($friends);
             $entityManager->flush();
-
+            $this->addFlash('success', 'Friend invitation sent');
             return $this->redirectToRoute('app_friends');
         }
 

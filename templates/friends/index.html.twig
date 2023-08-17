@@ -5,13 +5,11 @@
 {% block body %}
     {% include 'navbar/index.html.twig' %}
 <body>
-<div class="container d-flex justify-content-end p-3">
-    <div class="border-start p-3 text">
-        <h5>Friends</h5>
-        {% for friends in friends %}
-            <p>{{  friends.username }}</p>
-        {% endfor %}
+{% for notice in app.flashes('success') %}
+    <div class="alert alert-primary" role="alert">
+    {{ notice }}
     </div>
-</div>
+{% endfor %}
+
 </body>
 {% endblock %}

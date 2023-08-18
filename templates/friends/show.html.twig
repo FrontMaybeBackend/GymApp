@@ -1,18 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello FriendsController!{% endblock %}
-
+ {% block stylesheets %}
+     {{ encore_entry_link_tags('app') }}
+ {% endblock %}
 {% block body %}
     {% include 'navbar/index.html.twig' %}
     <body>{% for notice in app.flashes('success') %}
         {{ notice }}
     {% endfor %}
-    <div class="container d-flex justify-content-end p-3">
+    <div class="container d-flex justify-content-end p-3 custom-scrollbar">
         <div class="border-start p-3 text">
             <h5>Friends</h5>
+            <br>
             {% for friendData in friends %}
                 <p>
-                   Znajomy: {{ friendData.friends }}
+                    {{ friendData.friends }}
                 </p>
             {% endfor %}
         </div>

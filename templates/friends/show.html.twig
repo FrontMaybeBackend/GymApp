@@ -1,15 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello FriendsController!{% endblock %}
- {% block stylesheets %}
-     {{ encore_entry_link_tags('app') }}
- {% endblock %}
 {% block body %}
     {% include 'navbar/index.html.twig' %}
-    <body>{% for notice in app.flashes('success') %}
+    {% for notice in app.flashes('success') %}
         {{ notice }}
     {% endfor %}
-    <div class="container d-flex justify-content-end p-3 custom-scrollbar">
+    <div class="container d-flex justify-content-end p-3 overflow-y-scroll" style="height: 400px">
         <div class="border-start p-3 text">
             <h5>Friends</h5>
             <br>
@@ -20,5 +17,4 @@
             {% endfor %}
         </div>
     </div>
-    </body>
 {% endblock %}

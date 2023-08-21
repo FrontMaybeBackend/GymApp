@@ -3,13 +3,44 @@
 {% block title %}Hello MessengerController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    {% include 'navbar/index.html.twig' %}
+    {% for field, error in form.vars.errors %}
+        <div class="alert alert-danger">{{ error.message }}</div>
+    {% endfor %}
+    <form method="POST" action="{{ path('app_messenger') }}">
+        {{ form_widget(form._token) }}
+<div class="form-control">
+    <p class="text-black">From</p>
+    <input
+            name="{{ field_name(form.FromUser) }}"
+            value="{{ loginUser.email }}"
+            class="form-control"
+        >
+    <p class="text-black">To</p>
+    <select id="select"
+            name="{{ field_name(form.ToUsers) }}" class="form-control">
+        <option value="0">Select User</option>
+        {% for allUser in allUsers %}
+            <option value="{{ allUser.email }}">{{ allUser.email }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <input
+            name="{{ field_name(form.title) }}"
+            placeholder="{{ field_label(form.title) }}"
+            class="form-control"
+    >
+    <br>
+    <textarea
+            name="{{ field_name(form.description) }}"
+            placeholder="{{ field_label(form.description) }}"
+            class="form-control"
+    ></textarea>
 
-<div class="example-wrapper">
-
-    {{ form(form) }}
+    <button type="submit" class="btn btn-success m-2">
+        Send
+    </button>
 </div>
+    </form>
+
 {% endblock %}

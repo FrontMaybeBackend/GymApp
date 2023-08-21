@@ -32,9 +32,13 @@ class MessengerController extends AbstractController
 
             $entityManager->persist($message);
             $entityManager->flush();
+
+            return $this->redirectToRoute('app_starter_page');
         }
         return $this->render('messenger/index.html.twig', [
             'form' => $form,
+            'allUsers'=>$toUsers,
+            'loginUser'=>$user,
         ]);
     }
 }

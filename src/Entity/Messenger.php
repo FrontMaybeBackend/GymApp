@@ -18,7 +18,7 @@ class Messenger
     private ?string $FromUser = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $ToUsers = null;
+    private ?array $ToUsers = null;
 
     #[ORM\Column(length: 255)]
     private ?string $title = null;
@@ -43,12 +43,12 @@ class Messenger
         return $this;
     }
 
-    public function getToUsers(): ?string
+    public function getToUsers(): ?array
     {
         return $this->ToUsers;
     }
 
-    public function setToUsers(string $ToUsers): static
+    public function setToUsers(array $ToUsers): static
     {
         $this->ToUsers = $ToUsers;
 

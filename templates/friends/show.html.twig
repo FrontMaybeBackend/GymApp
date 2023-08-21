@@ -6,13 +6,14 @@
     {% for notice in app.flashes('success') %}
         {{ notice }}
     {% endfor %}
-    <div class="container d-flex justify-content-end p-3 overflow-y-scroll" style="height: 400px">
-        <div class="border-start p-3 text">
+    <div class="container d-flex justify-content-end p-3" style="height: 400px">
+        <div class="border-start p-3 text overflow-y-scroll" style="width: 200px">
             <h5>Friends</h5>
             <br>
             {% for friendData in friends %}
-                <p>
+                <p class="border-white border-bottom">
                     {{ friendData.friends }}
+                       <i class="far fa-envelope fa-lg mb-0"></i>
                 </p>
             {% endfor %}
         </div>

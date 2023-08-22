@@ -3,6 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Messenger;
+use App\Entity\User;
+use Doctrine\ORM\Mapping\Entity;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -15,13 +18,15 @@ class MessengerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('FromUser',EmailType::class,[
+            ->add('FromUser',EntityType::class,[
                 'label'=>'From',
-                'attr' =>['class' =>'form-control']
+                'attr' =>['class' =>'form-control'],
+                'class'=>User::class,
             ])
-            ->add('ToUsers',EmailType::class,[
+            ->add('ToUsers',EntityType::class,[
                 'label'=>'To',
-                'attr' =>['class' =>'form-control']
+                'attr' =>['class' =>'form-control'],
+                'class'=>User::class
             ])
             ->add('title',TextType::class,[
                 'label'=>'title',

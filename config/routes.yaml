@@ -43,5 +43,6 @@ app_add_friends:
     controller: App\Controller\FriendsController::add
 
 app_messenger:
-    path:
-        controller: App\Controller\MessengerController::index
+    path: '/messenger'
+    methods: POST
+    controller: App\Controller\MessengerController::index

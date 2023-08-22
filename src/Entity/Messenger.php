@@ -15,10 +15,10 @@ class Messenger
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $FromUser = null;
+    private ?User $FromUser = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $ToUsers = null;
+    private ?User $ToUsers = null;
 
     #[ORM\Column(length: 255)]
     private ?string $title = null;
@@ -31,24 +31,24 @@ class Messenger
         return $this->id;
     }
 
-    public function getFromUser(): ?string
+    public function getFromUser(): ?User
     {
         return $this->FromUser;
     }
 
-    public function setFromUser(string $FromUser): static
+    public function setFromUser(User $FromUser): static
     {
         $this->FromUser = $FromUser;
 
         return $this;
     }
 
-    public function getToUsers(): ?string
+    public function getToUsers(): ?User
     {
         return $this->ToUsers;
     }
 
-    public function setToUsers(string $ToUsers): static
+    public function setToUsers(User $ToUsers): static
     {
         $this->ToUsers = $ToUsers;
 

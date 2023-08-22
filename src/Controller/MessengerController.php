@@ -16,7 +16,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class MessengerController extends AbstractController
 {
-    #[Route('/messenger', name: 'app_messenger')]
+    #[Route('/messenger', name: 'app_messenger', methods: 'POST')]
     public function index(Request $request, EntityManagerInterface $entityManager, UserInterface $user,UserRepository $allUsers): Response
     {
         $message = new Messenger();
@@ -25,20 +25,23 @@ class MessengerController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-            $message->setFromUser($user);
-            $message->setToUsers($toUsers);
+            $message->setFromUser($form->getData());
+            $message->setToUsers($form->getData());
             $message->setTitle($form->get('title')->getData());
             $message->setDescription($form->get('description')->getData());
-
             $entityManager->persist($message);
             $entityManager->flush();
 
+            print_r($message);
             return $this->redirectToRoute('app_starter_page');
+        }else{
+            print_r($message);
         }
         return $this->render('messenger/index.html.twig', [
             'form' => $form,
             'allUsers'=>$toUsers,
             'loginUser'=>$user,
         ]);
+
     }
 }

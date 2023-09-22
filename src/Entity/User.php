@@ -59,15 +59,25 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Friends::class, mappedBy: 'user')]
     private Collection $friends;
 
-    #[ORM\ManyToOne(inversedBy: 'shipper')]
-    private ?Invitations $shipper = null;
+    #[ORM\ManyToOne(inversedBy: 'sender')]
+    private ?Invitations $sender = null;
 
-    #[ORM\ManyToOne(inversedBy: 'receiver')]
-    private ?Invitations $receiver = null;
+    #[ORM\OneToMany(mappedBy: 'receiver', targetEntity: Invitations::class)]
+    private Collection $receiver;
+
+
+
+
+
+
+
+
+
 
     public function __construct()
     {
         $this->friends = new ArrayCollection();
+        $this->receiver = new ArrayCollection();
     }
 
 
@@ -253,34 +263,47 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getShipper(): ?Invitations
+    public function getSender(): ?Invitations
     {
-        return $this->shipper;
+        return $this->sender;
     }
 
-    public function setShipper(?Invitations $shipper): static
+    public function setSender(?Invitations $sender): static
     {
-        $this->shipper = $shipper;
+        $this->sender = $sender;
 
         return $this;
     }
 
-    public function getReceiver(): ?Invitations
+    /**
+     * @return Collection<int, Invitations>
+     */
+    public function getReceiver(): Collection
     {
         return $this->receiver;
     }
 
-    public function setReceiver(?Invitations $receiver): static
+    public function addReceiver(Invitations $receiver): static
     {
-        $this->receiver = $receiver;
+        if (!$this->receiver->contains($receiver)) {
+            $this->receiver->add($receiver);
+            $receiver->setReceiver($this);
+        }
 
         return $this;
     }
 
+    public function removeReceiver(Invitations $receiver): static
+    {
+        if ($this->receiver->removeElement($receiver)) {
+            // set the owning side to null (unless already changed)
+            if ($receiver->getReceiver() === $this) {
+                $receiver->setReceiver(null);
+            }
+        }
 
-
-
-
+        return $this;
+    }
 
 
 }

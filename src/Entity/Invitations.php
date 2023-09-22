@@ -15,19 +15,18 @@ class Invitations
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\OneToMany(mappedBy: 'shipper', targetEntity: User::class)]
-    private Collection $shipper;
+    #[ORM\OneToMany(mappedBy: 'sender', targetEntity: User::class)]
+    private Collection $sender;
 
-    #[ORM\OneToMany(mappedBy: 'receiver', targetEntity: User::class)]
-    private Collection $receiver;
+    #[ORM\ManyToOne(inversedBy: 'receiver')]
+    private ?User $receiver = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?bool $status = null;
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $status = null;
 
     public function __construct()
     {
-        $this->shipper = new ArrayCollection();
-        $this->receiver = new ArrayCollection();
+        $this->sender = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -38,69 +37,51 @@ class Invitations
     /**
      * @return Collection<int, User>
      */
-    public function getShipper(): Collection
+    public function getSender(): Collection
     {
-        return $this->shipper;
+        return $this->sender;
     }
 
-    public function addShipper(User $shipper): static
+    public function addSender(User $sender): static
     {
-        if (!$this->shipper->contains($shipper)) {
-            $this->shipper->add($shipper);
-            $shipper->setShipper($this);
+        if (!$this->sender->contains($sender)) {
+            $this->sender->add($sender);
+            $sender->setSender($this);
         }
 
         return $this;
     }
 
-    public function removeShipper(User $shipper): static
+    public function removeSender(User $sender): static
     {
-        if ($this->shipper->removeElement($shipper)) {
+        if ($this->sender->removeElement($sender)) {
             // set the owning side to null (unless already changed)
-            if ($shipper->getShipper() === $this) {
-                $shipper->setShipper(null);
+            if ($sender->getSender() === $this) {
+                $sender->setSender(null);
             }
         }
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, User>
-     */
-    public function getReceiver(): Collection
+    public function getReceiver(): ?User
     {
         return $this->receiver;
     }
 
-    public function addReceiver(User $receiver): static
+    public function setReceiver(?User $receiver): static
     {
-        if (!$this->receiver->contains($receiver)) {
-            $this->receiver->add($receiver);
-            $receiver->setReceiver($this);
-        }
+        $this->receiver = $receiver;
 
         return $this;
     }
 
-    public function removeReceiver(User $receiver): static
-    {
-        if ($this->receiver->removeElement($receiver)) {
-            // set the owning side to null (unless already changed)
-            if ($receiver->getReceiver() === $this) {
-                $receiver->setReceiver(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function isStatus(): ?bool
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
-    public function setStatus(?bool $status): static
+    public function setStatus(?string $status): static
     {
         $this->status = $status;
 

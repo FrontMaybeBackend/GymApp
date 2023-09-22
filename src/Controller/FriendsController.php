@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Friends;
+use App\Entity\Invitations;
 use App\Entity\User;
 use App\Repository\FriendsRepository;
 use App\Repository\UserRepository;
@@ -28,18 +29,20 @@ class FriendsController extends AbstractController
     }
 
     #[Route('/friends/add/{id}/{username}', name:'app_add_friends', methods: ['POST'])]
-    public function add(Request $request, FriendsRepository $friendsRepository, UserRepository $userRepository, EntityManagerInterface $entityManager, $id ,  $username,UserInterface $userMain): Response
+    public function add(Request $request, FriendsRepository $friendsRepository, UserRepository $userRepository, EntityManagerInterface $entityManager, $id ,  $username,UserInterface $userMain, User $sender ): Response
     {
 
         if($request->isMethod('POST')){
-            $user = $userRepository->findOneBy(['id' => $id, 'username' => $username]);
+            $receiver = $userRepository->findOneBy(['id' => $id, 'username' => $username]);
+            //ustawiam wysyłającego jako zalogowane usera
+
+
             //sprawdza czy user istnieje
-            if(!$user){
+            if(!$receiver){
                 return new Response('User not found', Response::HTTP_NOT_FOUND);
             }
 
-
-
+            /*
             $friends = new Friends();
             $friends->setUsername($username);
             $userMain->addFriend($friends);
@@ -47,6 +50,17 @@ class FriendsController extends AbstractController
             $entityManager->persist($userMain);
             $entityManager->persist($friends);
             $entityManager->flush();
+            */
+
+            //wysyłanie zapytania o dodanie do znajomych.
+            $invitations = new Invitations();
+            $invitations->addSender($sender);
+            $invitations->setReceiver($receiver);
+            $invitations->setStatus('oczekujące');
+
+            $entityManager->persist($invitations);
+            $entityManager->flush();
+
             flash()->addSuccess('Friend ivitation sent');
             return $this->redirectToRoute('app_friends');
         }

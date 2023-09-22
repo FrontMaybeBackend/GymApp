@@ -22,9 +22,14 @@ class Friends
     #[ORM\Column(length: 255)]
     private ?string $username = null;
 
+
+
+
+
     public function __construct()
     {
         $this->user = new ArrayCollection();
+
     }
 
     public function getId(): ?int
@@ -67,6 +72,12 @@ class Friends
 
         return $this;
     }
+
+
+
+
+
+
 
 
 }

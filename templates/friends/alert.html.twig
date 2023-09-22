@@ -1,0 +1,14 @@
+<div class="container d-flex justify-content-end p-3" style="height: 400px">
+    <div class="border-start p-3 text overflow-y-scroll" style="width: 200px">
+        <h5>Friends</h5>
+        <br>
+        {% for friendData in friends %}
+            <p class="border-white border-bottom">
+              Wysyła Ci zaproszenie   {{friends.invitations }} zaznacz :
+                <button type="button" class="btn btn-dark" data-bs-toggle="messenger" data-bs-target="#messenger">
+                    <i class="far fa-envelope fa-lg mb-0"></i>
+                </button>
+            </p>
+        {% endfor %}
+    </div>
+</div>

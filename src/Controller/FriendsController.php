@@ -32,15 +32,12 @@ class FriendsController extends AbstractController
     {
 
         if($request->isMethod('POST')){
-
-
-
             $user = $userRepository->findOneBy(['id' => $id, 'username' => $username]);
-
             //sprawdza czy user istnieje
             if(!$user){
                 return new Response('User not found', Response::HTTP_NOT_FOUND);
             }
+
 
 
             $friends = new Friends();
@@ -58,6 +55,7 @@ class FriendsController extends AbstractController
             'friends'=>$friendsRepository->findFriends($id),
         ]);
     }
+
 
     #[Route('/friends/show', name: 'app_friends_show', methods: 'GET')]
     public function show(UserInterface $user, FriendsRepository $friendsRepository)
@@ -78,5 +76,6 @@ class FriendsController extends AbstractController
             'friends' => $friendsData,
         ]);
     }
+
 
 }

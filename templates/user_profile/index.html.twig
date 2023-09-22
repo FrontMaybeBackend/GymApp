@@ -38,9 +38,11 @@
                 <td>{{ user.trainingDays }}</td>
                 <td>
                     <a class="text-black" href="{{ path('app_user_profile_show', {'username': user.username}) }}"><p>Show Profile</a>
+                    {%  if app.user != user %}
                     <form action="{{ path('app_add_friends', {'id': user.id, 'username': user.username}) }}" method="post">
                         <button type="submit" class="text-black btn-info">Add to friends</button>
                     </form>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}

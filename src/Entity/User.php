@@ -59,6 +59,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Friends::class, mappedBy: 'user')]
     private Collection $friends;
 
+    #[ORM\ManyToOne(inversedBy: 'shipper')]
+    private ?Invitations $shipper = null;
+
+    #[ORM\ManyToOne(inversedBy: 'receiver')]
+    private ?Invitations $receiver = null;
+
     public function __construct()
     {
         $this->friends = new ArrayCollection();
@@ -246,6 +252,32 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function getShipper(): ?Invitations
+    {
+        return $this->shipper;
+    }
+
+    public function setShipper(?Invitations $shipper): static
+    {
+        $this->shipper = $shipper;
+
+        return $this;
+    }
+
+    public function getReceiver(): ?Invitations
+    {
+        return $this->receiver;
+    }
+
+    public function setReceiver(?Invitations $receiver): static
+    {
+        $this->receiver = $receiver;
+
+        return $this;
+    }
+
+
 
 
 

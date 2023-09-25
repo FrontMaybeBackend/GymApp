@@ -55,6 +55,9 @@ class FriendsController extends AbstractController
             //wysyłanie zapytania o dodanie do znajomych.
             $invitations = new Invitations();
             $invitations->addSender($sender);
+            $invitations->setSendero($userMain->getUserIdentifier());
+           // $invitationse = $receiver->getUserIdentifier();
+           // $invitations->setSendero($invitationse);
             $invitations->setReceiver($receiver);
             $invitations->setStatus('oczekujące');
 

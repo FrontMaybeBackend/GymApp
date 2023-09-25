@@ -6,6 +6,7 @@ use App\Repository\InvitationsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: InvitationsRepository::class)]
 class Invitations
@@ -23,6 +24,9 @@ class Invitations
 
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $status = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?string $sendero = null;
 
     public function __construct()
     {
@@ -87,4 +91,22 @@ class Invitations
 
         return $this;
     }
+
+    /**
+     * @return string|null
+     */
+    public function getSendero(): ?string
+    {
+        return $this->sendero;
+    }
+
+    /**
+     * @param string|null $sendero
+     */
+    public function setSendero(?string $sendero): void
+    {
+        $this->sendero = $sendero;
+    }
+
+
 }

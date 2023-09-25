@@ -65,15 +65,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'receiver', targetEntity: Invitations::class)]
     private Collection $receiver;
 
-
-
-
-
-
-
-
-
-
     public function __construct()
     {
         $this->friends = new ArrayCollection();

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello InvitationsController!{% endblock %}
+
+{% block body %}
+    {% include 'navbar/index.html.twig' %}
+
+    {% for invitation in invitations %}
+        <table>
+            <tr>{{ invitation.sendero }}</tr>
+            <tr>{{ invitation.status }}</tr>
+        </table>
+    {% endfor %}
+
+
+{% endblock %}

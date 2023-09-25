@@ -6,11 +6,23 @@
     {% include 'navbar/index.html.twig' %}
 
     {% for invitation in invitations %}
-        <table>
-            <tr>{{ invitation.sendero }}</tr>
-            <tr>{{ invitation.status }}</tr>
-        </table>
+<table class="table">
+    <tbody>
+    <tr>
+        <th>Sender:</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+    <tr>
+        <td>{{ invitation.sendero }}</td>
+        <td>{{ invitation.status }}</td>
+      <td>
+          <button class="btn-success btn">+</button>
+          <button class="btn-success btn" >-</button>
+      </td>
+
+    </tr>
+    </tbody>
+</table>
     {% endfor %}
-
-
-{% endblock %}
+{%  endblock %}

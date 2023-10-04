@@ -7,6 +7,7 @@ use App\Entity\Invitations;
 use App\Entity\User;
 use App\Repository\FriendsRepository;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,7 +28,7 @@ class FriendsController extends AbstractController
 
 
     }
-
+//Wysyła zaproszenie do znajomych
     #[Route('/friends/add/{id}/{username}', name:'app_add_friends', methods: ['POST'])]
     public function add(Request $request, FriendsRepository $friendsRepository, UserRepository $userRepository, EntityManagerInterface $entityManager, $id ,  $username,UserInterface $userMain, User $sender ): Response
     {
@@ -36,28 +37,17 @@ class FriendsController extends AbstractController
             $receiver = $userRepository->findOneBy(['id' => $id, 'username' => $username]);
             //ustawiam wysyłającego jako zalogowane usera
 
-
             //sprawdza czy user istnieje
             if(!$receiver){
                 return new Response('User not found', Response::HTTP_NOT_FOUND);
             }
 
-            /*
-            $friends = new Friends();
-            $friends->setUsername($username);
-            $userMain->addFriend($friends);
-
-            $entityManager->persist($userMain);
-            $entityManager->persist($friends);
-            $entityManager->flush();
-            */
 
             //wysyłanie zapytania o dodanie do znajomych.
             $invitations = new Invitations();
             $invitations->addSender($sender);
             $invitations->setSendero($userMain->getUserIdentifier());
-           // $invitationse = $receiver->getUserIdentifier();
-           // $invitations->setSendero($invitationse);
+
             $invitations->setReceiver($receiver);
             $invitations->setStatus('oczekujące');
 
@@ -71,6 +61,25 @@ class FriendsController extends AbstractController
         return $this->render('friends/index.html.twig', [
             'friends'=>$friendsRepository->findFriends($id),
         ]);
+    }
+
+    //Ustawia znajomych w relacji
+    #[Route('/friends/set', name: 'app_friends_set')]
+    public function set(int $id,  $receiver, EntityManagerInterface $entityManager): Response
+    {
+
+       $status = $entityManager->getRepository(Invitations::class)->findBy($id);
+
+       if($status->getStatus() === 'przyjęte'){
+           $friends = new Friends();
+           $friends->setUsername($receiver);
+           $receiver->addFriend($friends);
+
+           $entityManager->persist($receiver);
+           $entityManager->persist($friends);
+           $entityManager->flush();
+       }
+        return $this->redirectToRoute('app_friends');
     }
 
 

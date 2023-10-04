@@ -42,6 +42,10 @@ app_add_friends:
     methods: POST
     controller: App\Controller\FriendsController::add
 
+app_friends_set:
+    path: '/friends/set'
+    controller: App\Controller\FriendsController::set
+
 app_messenger:
     path: '/messenger'
     methods: POST
@@ -50,4 +54,15 @@ app_messenger:
 
 app_invitations:
     path: '/invitations/show'
-    controller: App\Controller\InvitationsController::show
+    controller: App\Controller\InvitationsController::index
+
+app_invitations_accept:
+    path: '/invitations/accept/{id}'
+    methods: GET
+    controller: App\Controller\InvitationsController::accept
+
+
+app_invitations_rejected:
+    path: '/invitations/rejected/{id}'
+    methods: GET
+    controller: App\Controller\InvitationsController::rejected

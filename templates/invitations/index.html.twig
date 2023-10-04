@@ -5,24 +5,26 @@
 {% block body %}
     {% include 'navbar/index.html.twig' %}
 
-    {% for invitation in invitations %}
+
 <table class="table">
     <tbody>
+    {% for invitation in invitations %}
     <tr>
         <th>Sender:</th>
         <th>Status</th>
         <th>Action</th>
     </tr>
+
     <tr>
         <td>{{ invitation.sendero }}</td>
         <td>{{ invitation.status }}</td>
       <td>
-          <button class="btn-success btn">+</button>
-          <button class="btn-success btn" >-</button>
+          <a href="{{  path('app_invitations_accept', {'id': invitation.id}) }} " class="btn-success btn">+</a>
+          <a href="{{  path('app_invitations_rejected', {'id':invitation.id}) }}" class="btn-success btn">-</a>
       </td>
 
     </tr>
+    {% endfor %}
     </tbody>
 </table>
-    {% endfor %}
 {%  endblock %}

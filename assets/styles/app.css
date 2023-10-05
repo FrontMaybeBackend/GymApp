@@ -21,5 +21,12 @@ p{
     flex-direction: row;
 }
 
+#friendsDiv{
+    border: 1px solid #0D0000;
+    background: linear-gradient(19deg, rgb(240 240 239 / 13%) 21.65%, rgb(255 246 246) 100%);
+    box-shadow: 5px 5px 5px 0px rgba(4, 0, 0, 0.65) inset;
+    /* width: 200px; */
+    height: 86vh;
+}
 
 

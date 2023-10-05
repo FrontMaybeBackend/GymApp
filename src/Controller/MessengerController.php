@@ -37,7 +37,7 @@ class MessengerController extends AbstractController
         }else{
             print_r($message);
         }
-        return $this->render('messenger/index.html.twig', [
+        return $this->render('friends/show.html.twig', [
             'form' => $form,
             'allUsers'=>$toUsers,
             'loginUser'=>$user,

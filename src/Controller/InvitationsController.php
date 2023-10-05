@@ -41,7 +41,7 @@ class InvitationsController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_friends');
+        return $this->redirectToRoute('app_friends_set', ['id'=>$id] );
     }
 
     //Odrzuca zapro do znajomych
@@ -55,7 +55,6 @@ class InvitationsController extends AbstractController
             $status->setStatus('odrzucone');
             $entityManager->flush();
         }
-
 
         return $this->redirectToRoute('app_friends');
     }

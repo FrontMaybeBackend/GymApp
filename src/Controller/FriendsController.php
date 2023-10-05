@@ -64,16 +64,19 @@ class FriendsController extends AbstractController
     }
 
     //Ustawia znajomych w relacji
-    #[Route('/friends/set', name: 'app_friends_set')]
-    public function set(int $id,  $receiver, EntityManagerInterface $entityManager): Response
+    #[Route('/friends/set/{id}', name: 'app_friends_set')]
+    public function set(int $id, EntityManagerInterface $entityManager): Response
     {
 
-       $status = $entityManager->getRepository(Invitations::class)->findBy($id);
+       $status = $entityManager->getRepository(Invitations::class)->find($id);
+       $receiver = $this->getUser();
+
 
        if($status->getStatus() === 'przyjęte'){
            $friends = new Friends();
-           $friends->setUsername($receiver);
            $receiver->addFriend($friends);
+           $friends->setUsername($status->getSendero());
+
 
            $entityManager->persist($receiver);
            $entityManager->persist($friends);
@@ -81,6 +84,7 @@ class FriendsController extends AbstractController
        }
         return $this->redirectToRoute('app_friends');
     }
+
 
 
     #[Route('/friends/show', name: 'app_friends_show', methods: 'GET')]

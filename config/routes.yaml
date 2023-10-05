@@ -43,7 +43,7 @@ app_add_friends:
     controller: App\Controller\FriendsController::add
 
 app_friends_set:
-    path: '/friends/set'
+    path: '/friends/set/{id}'
     controller: App\Controller\FriendsController::set
 
 app_messenger:

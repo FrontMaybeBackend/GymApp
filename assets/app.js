@@ -12,6 +12,7 @@ import './styles/userIndexstyle.css';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
+
 const $ = require('jquery');
 // this "modifies" the jquery module: adding behavior to it
 // the bootstrap module doesn't export/return anything

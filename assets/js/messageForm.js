@@ -1,4 +1,4 @@
-function myFunction() {
+ function myFunction() {
     var x = document.getElementById("formo");
     if(x.style.display === "none") {
         x.style.display = "block";
@@ -6,3 +6,5 @@ function myFunction() {
         x.style.display = "none";
     }
 }
+
+ document.getElementById("message").addEventListener("click", myFunction);

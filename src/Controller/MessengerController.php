@@ -32,7 +32,7 @@ class MessengerController extends AbstractController
             $entityManager->persist($message);
             $entityManager->flush();
 
-            print_r($message);
+
             return $this->redirectToRoute('app_starter_page');
         }else{
             print_r($message);

@@ -4,7 +4,17 @@
 
 {% block body %}
     {% include 'navbar/index.html.twig' %}
+    {% block stylesheets %}
+        {{  parent() }}
+        {{ encore_entry_link_tags('userIndexstyle') }}
 
+    {% endblock %}
+
+    {% block javascripts %}
+
+        {{ encore_entry_script_tags('app') }}
+
+    {% endblock %}
     <table class="table align-middle mb-0 bg-white ">
         <thead class="bg-light">
         <tr>
@@ -37,10 +47,10 @@
                 <td>{{ user.workout }}</td>
                 <td>{{ user.trainingDays }}</td>
                 <td>
-                    <a class="text-black" href="{{ path('app_user_profile_show', {'username': user.username}) }}"><p>Show Profile</a>
+                    <a id="user_show" class="text-white" href="{{ path('app_user_profile_show', {'username': user.username}) }} ">SHOW PROFILE</a>
                     {%  if app.user != user %}
                     <form action="{{ path('app_add_friends', {'id': user.id, 'username': user.username}) }}" method="post">
-                        <button type="submit" class="text-black btn-info">Add to friends</button>
+                        <button id="user_add" type="submit" class="text-white" >ADD TO FRIENDS</button>
                     </form>
                     {% endif %}
                 </td>

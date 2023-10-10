@@ -1,0 +1,26 @@
+#user_show{
+    background-color: #110404;
+    text-decoration: none;
+    width: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+
+}
+
+#user_add{
+    background-color: #065BA9;
+    text-decoration: none;
+    width: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    HEIGHT: 30px;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+}

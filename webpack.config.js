@@ -23,6 +23,7 @@ Encore
     .addEntry('app', './assets/app.js')
     .addStyleEntry('appstyle','/assets/styles/app.css')
     .addStyleEntry('loginstyle', '/assets/styles/loginstyle.css')
+    .addStyleEntry('userIndexstyle','/assets/styles/userIndexstyle.css')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()

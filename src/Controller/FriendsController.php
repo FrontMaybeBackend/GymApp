@@ -22,23 +22,24 @@ class FriendsController extends AbstractController
     {
 
         return $this->render('friends/index.html.twig', [
-            'friends'=>$friendsRepository->findAll(),
+            'friends' => $friendsRepository->findAll(),
 
         ]);
 
 
     }
+
 //Wysyła zaproszenie do znajomych
-    #[Route('/friends/add/{id}/{username}', name:'app_add_friends', methods: ['POST'])]
-    public function add(Request $request, FriendsRepository $friendsRepository, UserRepository $userRepository, EntityManagerInterface $entityManager, $id ,  $username,UserInterface $userMain, User $sender ): Response
+    #[Route('/friends/add/{id}/{username}', name: 'app_add_friends', methods: ['POST'])]
+    public function add(Request $request, FriendsRepository $friendsRepository, UserRepository $userRepository, EntityManagerInterface $entityManager, $id, $username, UserInterface $userMain, User $sender): Response
     {
 
-        if($request->isMethod('POST')){
+        if ($request->isMethod('POST')) {
             $receiver = $userRepository->findOneBy(['id' => $id, 'username' => $username]);
             //ustawiam wysyłającego jako zalogowane usera
 
             //sprawdza czy user istnieje
-            if(!$receiver){
+            if (!$receiver) {
                 return new Response('User not found', Response::HTTP_NOT_FOUND);
             }
 
@@ -59,7 +60,7 @@ class FriendsController extends AbstractController
         }
 
         return $this->render('friends/index.html.twig', [
-            'friends'=>$friendsRepository->findFriends($id),
+            'friends' => $friendsRepository->findFriends($id),
         ]);
     }
 
@@ -68,23 +69,22 @@ class FriendsController extends AbstractController
     public function set(int $id, EntityManagerInterface $entityManager): Response
     {
 
-       $status = $entityManager->getRepository(Invitations::class)->find($id);
-       $receiver = $this->getUser();
+        $status = $entityManager->getRepository(Invitations::class)->find($id);
+        $receiver = $this->getUser();
 
 
-       if($status->getStatus() === 'przyjęte'){
-           $friends = new Friends();
-           $receiver->addFriend($friends);
-           $friends->setUsername($status->getSendero());
+        if ($status->getStatus() === 'przyjęte') {
+            $friends = new Friends();
+            $receiver->addFriend($friends);
+            $friends->setUsername($status->getSendero());
 
 
-           $entityManager->persist($receiver);
-           $entityManager->persist($friends);
-           $entityManager->flush();
-       }
+            $entityManager->persist($receiver);
+            $entityManager->persist($friends);
+            $entityManager->flush();
+        }
         return $this->redirectToRoute('app_friends');
     }
-
 
 
     #[Route('/friends/show', name: 'app_friends_show', methods: 'GET')]
@@ -101,6 +101,7 @@ class FriendsController extends AbstractController
                 'friends' => $result['friend_username'] // Używamy poprawnej nazwy klucza
             ];
         }
+
 
         return $this->render('friends/show.html.twig', [
             'friends' => $friendsData,

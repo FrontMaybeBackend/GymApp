@@ -46,12 +46,6 @@ app_friends_set:
     path: '/friends/set/{id}'
     controller: App\Controller\FriendsController::set
 
-app_messenger:
-    path: '/messenger'
-    methods: POST
-    controller: App\Controller\MessengerController::index
-
-
 app_invitations:
     path: '/invitations/show'
     controller: App\Controller\InvitationsController::index

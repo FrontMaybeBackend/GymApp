@@ -21,7 +21,7 @@ app_user_profile_index:
         controller: App\Controller\UserProfileController:index
 
 app_user_profile_show:
-    path: '/{username}'
+    path: '/user/{username}'
     methods: GET
     controller: App\Controller\UserProfileController::show
 
@@ -38,7 +38,7 @@ app_friends_show:
         controller: App\Controller\FriendsController::show
 
 app_add_friends:
-    path: '/{id}/{username}'
+    path: '/friends/add/{id}/{username}'
     methods: POST
     controller: App\Controller\FriendsController::add
 
@@ -60,3 +60,9 @@ app_invitations_rejected:
     path: '/invitations/rejected/{id}'
     methods: GET
     controller: App\Controller\InvitationsController::rejected
+
+
+app_messages_send:
+    path : '/messages/'
+    methods: POST
+    controller: App\Controller\MessagesController::add

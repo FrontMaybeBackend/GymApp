@@ -19,22 +19,22 @@
 
     <div id="friendsDiv" class="container-fluid d-flex justify-content-end p-3 ">
         <div id="divForm">
-            <form id="formo">
+            <form id="formo" method="POST" action="{{ path ('app_messages_send') }}">
                 <div class="form-group">
-                    <label for="usernameSelect">Username</label>
-                    <select  class="form-control" id="usernameSelect">
+                    <label for="toUser">Username</label>
+                    <select class="form-control" id="toUser"  name="toUser">
                         {% for friendData in friends %}
-                            <option id="option"> {{ friendData.friends }}</option>
+                            <option value="{{ friendData.friends }}"> {{ friendData.friends }}</option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" class="form-control" id="title">
+                    <input type="text" class="form-control" id="title" name="title">
                 </div>
                 <div class="form-group ">
                     <label for="description">Description</label>
-                    <textarea class="form-control" id="description" rows="3"></textarea>
+                    <textarea class="form-control" id="description" name="description" rows="3"></textarea>
                 </div>
                 <div class="form-group p-2">
                     <button class="btn btn-success" type="submit">Send</button>

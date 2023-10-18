@@ -7,7 +7,7 @@
         {{ notice }}
     {% endfor %}
     {% block stylesheets %}
-        {{ encore_entry_link_tags('appstyle') }}
+        {{ encore_entry_link_tags('friendsstyle') }}
     {% endblock %}
     {% block javascripts %}
         {{ encore_entry_script_tags('messageForm') }}
@@ -19,43 +19,44 @@
 
 
 
-    <div id="friendsDiv" class="container d-flex justify-content-end p-3">
-        <div class="" style="left: -45vw;
-    top: 15px;
-    position: relative;">
+    <div id="friendsDiv" class="container-fluid d-flex justify-content-end p-3 ">
+        <div id="divForm">
             <form id="formo">
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <div class="form-group">
+                    <label for="usernameSelect">Username</label>
+                    <select class="form-control" id="usernameSelect">
+                        {% for friendData in friends %}
+                            <option> {{ friendData.friends }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" id="title">
                 </div>
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                <div class="form-group ">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" id="description" rows="3"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="form-group p-2">
+                    <button class="btn btn-success" type="submit">Send </button>
+                </div>
             </form>
         </div>
 
 
-        <div class="border-start p-3 text overflow-y-scroll" style="width: 200px">
+        <div id="test" class="container-fluid border-start text overflow-y-scroll">
             <h5 class="text-black">Friends</h5>
             <br>
             {% for friendData in friends %}
-                <p class="border-white border-bottom">
+                <div  id="test2" class=" container-fluid border-white border-bottom d-flex justify-content-between">
                     {{ friendData.friends }}
-                    <button  id="message" type="button" class="btn btn-dark" data-bs-toggle="messenger" data-bs-target="#messenger">
-                        <i class="far fa-envelope fa-lg mb-0"></i>
+                        <button id="message" type="button" class="btn btn-dark" data-bs-toggle="messenger"
+                            data-bs-target="#messenger">
+                        <i class="far fa-envelope fa-lg "></i>
                     </button>
-                </p>
+                </div>
             {% endfor %}
         </div>
     </div>
-
-
-
 {% endblock %}

@@ -9,6 +9,7 @@
 import './styles/app.css';
 import './styles/loginstyle.css';
 import './styles/userIndexstyle.css';
+import './styles/friendsStyle.css';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 

@@ -1,0 +1,24 @@
+@media (min-width: 300px) and (max-width: 425px) {
+    #test {
+        width: 450px;
+    }
+}
+
+@media (min-width: 760px) {
+    #test {
+        width: 270px;
+    }
+
+}
+
+#divForm {
+    width: 100vw;
+}
+
+#description {
+    height: 200px;
+}
+
+#message{
+    background-color:  #065BA9;
+}

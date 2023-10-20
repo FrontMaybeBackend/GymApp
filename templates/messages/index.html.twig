@@ -1,20 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MessagesController!{% endblock %}
+{% block title %}Gymapp{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    {% include 'navbar/index.html.twig' %}
+    <div class="container-fluid d-flex justify-content-start align-items-center border border-2 text-white">
+        Inbox
+        Send
+        <div class="container d-flex justify-content-start align-items-start w-25 bg-danger">
+           test
+        </div>
+        <div class="container-fluid justify-content-start align-items-start w-25 column text-nowrap lh-1">
+            test
+        </div>
+    </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <div class="border-end border-2 w-25 text-white p-3 bg-black vh-100">
+        {% for messages in message %}
+            <h4>{{ messages.fromUser }}</h4>
+            <h6> tytuł =>{{ messages.title }}</h6>
+            <h6> opis => {{ messages.description }}</h6>
+        {% endfor %}
+    </div>
+    <div class="container-fluid position-absolute text-white border border-2 w-75 vh-100" style="left: 315px; top: 110px;">
+        <div class="d-flex justify-content-center align-items-center h-100">
+        </div>
+    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/krzys/gymapp/src/Controller/MessagesController.php'|file_link(0) }}">src/Controller/MessagesController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/krzys/gymapp/templates/messages/index.html.twig'|file_link(0) }}">templates/messages/index.html.twig</a></code></li>
-    </ul>
-</div>
 {% endblock %}

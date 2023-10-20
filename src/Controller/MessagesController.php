@@ -4,6 +4,7 @@ namespace App\Controller;
 
 
 use App\Entity\Messages;
+use App\Repository\MessagesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,5 +35,19 @@ class MessagesController extends AbstractController
         }
 
         return $this->render('starter_page/index.html.twig');
+    }
+
+    #[Route('/messages/index', name:'app_messages_get', methods: 'GET')]
+    public function index(MessagesRepository $messagesRepository, UserInterface $user): Response
+    {
+        $loggedUser = $user->getUsername();
+
+        $message = $messagesRepository->findBy(['toUser'=> $loggedUser]);
+
+        return $this->render('messages/index.html.twig', [
+            'message' => $message
+        ]);
+
+
     }
 }

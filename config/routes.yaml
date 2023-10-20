@@ -66,3 +66,8 @@ app_messages_send:
     path : '/messages/'
     methods: POST
     controller: App\Controller\MessagesController::add
+
+app_messages_get:
+    path : '/messages/index'
+    methods: GET
+    controller: App\Controller\MessagesController::index

@@ -6,25 +6,34 @@
     {% include 'navbar/index.html.twig' %}
 
 
-<table class="table">
-    <tbody>
-    {% for invitation in invitations %}
-    <tr>
-        <th>Sender:</th>
-        <th>Status</th>
-        <th>Action</th>
-    </tr>
+    <table class="table">
+        <tbody>
+        {% for invitation in invitations %}
+            <tr>
+                <th>Sender:</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
 
-    <tr>
-        <td>{{ invitation.sendero }}</td>
-        <td>{{ invitation.status }}</td>
-      <td>
-          <a href="{{  path('app_invitations_accept', {'id': invitation.id}) }} " class="btn-success btn">+</a>
-          <a href="{{  path('app_invitations_rejected', {'id':invitation.id}) }}" class="btn-success btn">-</a>
-      </td>
+            <tr>
+                <td>{{ invitation.sendero }}</td>
+                <td>{{ invitation.status }}</td>
+                <td>
+                    {% if invitation.status == "przyjęte" %}
+                        <a href="{{ path('app_invitations_accept', {'id': invitation.id}) }} "
+                           class="btn-success btn disabled" aria-disabled="true">+</a>
+                        <a href="{{ path('app_invitations_rejected', {'id':invitation.id}) }}"
+                           class="btn-success btn disabled" aria-disabled="true">-</a>
+                    {% else %}
+                        <a href="{{ path('app_invitations_accept', {'id': invitation.id}) }} " class="btn-success btn ">+</a>
+                        <a href="{{ path('app_invitations_rejected', {'id':invitation.id}) }}"
+                           class="btn-success btn">-</a>
+                    {% endif %}
 
-    </tr>
-    {% endfor %}
-    </tbody>
-</table>
-{%  endblock %}
+                </td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

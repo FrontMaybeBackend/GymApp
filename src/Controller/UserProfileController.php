@@ -4,22 +4,32 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\FriendsRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('/user/profile')]
 class UserProfileController extends AbstractController
 {
     #[Route('/', name: 'app_user_profile_index', methods: ['GET'])]
-    public function index(UserRepository $userRepository): Response
+    public function index(UserRepository $userRepository, FriendsRepository $friendsRepository,UserInterface $user): Response
     {
+        $loggedUser = $user->getUserIdentifier();
+
+        $isFriend = $user->getFriends($loggedUser);
+
+
+
+
         return $this->render('user_profile/index.html.twig', [
             'users' => $userRepository->findAll(),
+            'friends' =>$isFriend ,
         ]);
     }
 

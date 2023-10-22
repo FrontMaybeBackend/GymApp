@@ -8,23 +8,26 @@
         Inbox
         Send
         <div class="container d-flex justify-content-start align-items-start w-25 bg-danger">
-           test
+            test
         </div>
         <div class="container-fluid justify-content-start align-items-start w-25 column text-nowrap lh-1">
             test
         </div>
     </div>
 
-    <div class="border-end border-2 w-25 text-white p-3 bg-black vh-100">
+    <div id ="message" class="border-end  border-2 w-25 text-white p-3 bg-black vh-100">
         {% for messages in message %}
             <h4>{{ messages.fromUser }}</h4>
             <h6> tytuł =>{{ messages.title }}</h6>
             <h6> opis => {{ messages.description }}</h6>
         {% endfor %}
     </div>
-    <div class="container-fluid position-absolute text-white border border-2 w-75 vh-100" style="left: 315px; top: 110px;">
-        <div class="d-flex justify-content-center align-items-center h-100">
+    <div class="container-fluid position-absolute text-white border border-2 w-75 vh-100"
+         style="left: 315px; top: 110px;">
+        <div  id="test" class="d-flex justify-content-center align-items-center h-100">
         </div>
     </div>
 
+
 {% endblock %}
+

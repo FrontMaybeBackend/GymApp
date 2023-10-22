@@ -19,7 +19,7 @@
                 <td>{{ invitation.sendero }}</td>
                 <td>{{ invitation.status }}</td>
                 <td>
-                    {% if invitation.status == "przyjęte" %}
+                    {% if invitation.status == "przyjęte" or invitation.status == "odrzucone"%}
                         <a href="{{ path('app_invitations_accept', {'id': invitation.id}) }} "
                            class="btn-success btn disabled" aria-disabled="true">+</a>
                         <a href="{{ path('app_invitations_rejected', {'id':invitation.id}) }}"

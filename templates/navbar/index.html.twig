@@ -98,22 +98,10 @@
                     {%  endif %}
                 </li>
                 {% if app.user %}
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ app.user.username }}
-                    </button>
-                    <ul class="dropdown-menu w-25" aria-labelledby="dropdownMenuButton1">
-                        <li>
-                            <a class="dropdown-item" href="{{ path('app_user_profile_show', { username: app.user.username }) }}">Profile</a>
-                        </li>
-
-                        <li>
                             <form method="post"  action="{{path('app_logout')}}">
-                                <button class="btn" type="submit">Logout</button>
+                                <button class="btn btn-dark text-white" type="submit">Logout</button>
                             </form>
-                        </li>
-                    </ul>
-                </div>
+                    <a class ="btn btn-dark text-white h-25" href="{{ path('app_user_profile_show', { username: app.user.username }) }}"> {{ app.user.username }}</a>
                 {% else %}
                 <li class="nav-item text-center mx-2 mx-lg-1">
                     <a class="nav-link" href="{{  path('app_login') }}">

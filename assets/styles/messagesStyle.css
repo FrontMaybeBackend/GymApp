@@ -10,6 +10,38 @@
     top: 110px;
 }
 
-#leftDiv{
+#leftDiv {
     background-color: #065BA9;
 }
+
+#sendMessage {
+    position: absolute;
+    top: 300px;
+    left: -4px;
+    background-color: #065BA9;
+}
+
+@media (min-width: 300px) and (max-width: 425px) {
+
+    #leftDiv {
+        width: 50px;
+    }
+
+    #rightDiv {
+        left: 80px;
+        width: 25px;
+        top: 90px;
+
+    }
+
+    #sendMessage {
+        width: 241px;
+        height: 196px;
+    }
+
+    #textarea {
+        width: 130px;
+        height: 70px;
+    }
+}
+

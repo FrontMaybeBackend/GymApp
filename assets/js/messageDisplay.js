@@ -7,15 +7,23 @@ document.addEventListener('DOMContentLoaded', function () {
         messageDiv.addEventListener('click', function () {
             let userData = JSON.parse(messageDiv.getAttribute('data-user'));
 
-            // Znajdź istniejące elementy h6, h5 i h4 w divie "test"
+            // Znajdź istniejące elementy h6, h5,p,span i h4 w divie "test"
+            let testDiv = document.getElementById('test');
             let h6 = testDiv.querySelector('h6');
             let h5 = testDiv.querySelector('h5');
             let h4 = testDiv.querySelector('h4');
+            let p = testDiv.querySelector("p");
+            let span = testDiv.querySelector('span');
 
-            // Aktualizuj zawartość istniejących elementów h6, h5 i h4 z danymi użytkownika
-            h6.textContent = userData.fromUser;
-            h5.textContent = userData.title;
-            h4.textContent = userData.description;
+
+            h6.textContent =  "Username: "  + userData.fromUser;
+            h5.textContent = "Title: " + userData.title;
+            h4.textContent = "Description: " +  userData.description;
+
+            let usernameLabel = testDiv.querySelector('label[for="toUser"]');
+            let titleLabel = testDiv.querySelector('label[for="title"]');
+            usernameLabel.textContent = "Username: " + userData.fromUser;
+            titleLabel.textContent = "Title: " + userData.title;
         });
     });
 });

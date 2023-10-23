@@ -18,7 +18,7 @@
         Send
     </div>
 
-    <div class="border-end border-2 w-25 text-white p-3 vh-100" style="background-color: #065BA9;">
+    <div id="leftDiv" class="border-end border-2 w-25 text-white p-3 vh-100">
         {% for messages in message %}
             <div class="message border-bottom p-2" data-user="{{ messages|serialize(format ='json') }}">
                 <p>{{ messages.fromUser }}</p>

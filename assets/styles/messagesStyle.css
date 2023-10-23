@@ -21,7 +21,7 @@
     background-color: #065BA9;
 }
 
-@media (min-width: 300px) and (max-width: 425px) {
+@media (min-width: 300px) and (max-width: 375px)  {
 
     #leftDiv {
         width: 50px;
@@ -35,13 +35,157 @@
     }
 
     #sendMessage {
+        top: 271px;
         width: 241px;
-        height: 196px;
+        height: 224px;
     }
 
     #textarea {
-        width: 130px;
-        height: 70px;
+        height: auto;
+    }
+    #description{
+        resize: none;
     }
 }
+
+@media (min-width: 375px) and (max-width: 425px) {
+
+    #leftDiv {
+        width: 50px;
+    }
+
+    #rightDiv {
+        left: 94px;
+        width: 25px;
+        top: 88px;
+
+    }
+
+    #sendMessage {
+        top: 273px;
+        width: 283px;
+        height: 224px;
+    }
+
+    #textarea {
+        height: auto;
+    }
+
+    #description{
+        resize: none;
+    }
+}
+
+
+
+@media (min-width: 425px) and (max-width: 768px) {
+
+    #leftDiv {
+        width: 100px;
+    }
+
+    #rightDiv {
+        left: 106px;
+        width: 25px;
+        top: 88px;
+
+    }
+
+    #sendMessage {
+        top: 273px;
+        width: 321px;
+        height: 225px;
+    }
+
+    #textarea {
+
+        height: auto;
+    }
+    #description{
+        resize: none;
+    }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    #leftDiv {
+        width: 130px;
+    }
+
+    #rightDiv {
+        left: 192px;
+        width: 25px;
+        top: 88px;
+
+    }
+
+    #sendMessage {
+        width: 578px;
+        height: 225px;
+        top: 273px;
+    }
+
+    #textarea {
+
+        height: auto;
+    }
+    #description{
+        resize: none;
+    }
+}
+
+
+@media (min-width: 1024px) and (max-width: 1440px) {
+
+    #leftDiv {
+        width: 130px;
+    }
+
+    #rightDiv {
+        left: 256px;
+        width: 25px;
+        top: 113px;
+
+    }
+
+    #sendMessage {
+        width: 770px;
+        height: 390px;
+        top: 272px;
+    }
+
+    #textarea {
+        height: auto;
+    }
+    #description{
+        height: 250px;
+        resize: none;
+    }
+}
+
+@media (min-width: 1440px) and (max-width: 2560px) {
+
+    #leftDiv {
+        width: 130px;
+    }
+
+    #rightDiv {
+        left: 359px;
+        top: 113px;
+
+    }
+
+    #sendMessage {
+        width: 1083px;
+        height: 494px;
+        top: 272px;
+    }
+
+
+    #description{
+        height: 358px;
+        resize: none;
+    }
+}
+
+
 

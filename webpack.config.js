@@ -22,6 +22,7 @@ Encore
      */
     .addEntry('app', './assets/app.js')
     .addEntry('messageForm','/assets/js/messageForm.js')
+    .addEntry('messageDisplay','/assets/js/messageDisplay.js')
     .addStyleEntry('appstyle','/assets/styles/app.css')
     .addStyleEntry('loginstyle', '/assets/styles/loginstyle.css')
     .addStyleEntry('userIndexstyle','/assets/styles/userIndexstyle.css')

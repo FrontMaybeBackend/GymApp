@@ -18,37 +18,12 @@
 
 
     <div id="friendsDiv" class="container-fluid d-flex justify-content-end p-3 ">
-        <div id="divForm">
-            <form id="formo" method="POST" action="{{ path ('app_messages_send') }}">
-                <div class="form-group">
-                    <label for="toUser">Username</label>
-                    <select class="form-control" id="toUser"  name="toUser">
-                        {% for friendData in friends %}
-                            <option value="{{ friendData.friends }}"> {{ friendData.friends }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" class="form-control" id="title" name="title">
-                </div>
-                <div class="form-group ">
-                    <label for="description">Description</label>
-                    <textarea class="form-control" id="description" name="description" rows="3"></textarea>
-                </div>
-                <div class="form-group p-2">
-                    <button class="btn btn-success" type="submit">Send</button>
-                </div>
-            </form>
-        </div>
-
-
         <div id="test" class="container-fluid border-start text overflow-y-scroll">
             <h5 class="text-black">Friends</h5>
             <br>
-            {% for friendData in friends %}
+            {% for friend in friends %}
                 <div id="test2" class=" container-fluid border-white border-bottom d-flex justify-content-between">
-                    {{ friendData.friends }}
+                    {{ friend.friends }}
                     <button id="message" type="button" class="btn btn-dark" data-bs-toggle="messenger"
                             data-bs-target="#messenger">
                         <i class="far fa-envelope fa-lg"></i>

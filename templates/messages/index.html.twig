@@ -36,13 +36,14 @@
                 <label for="getDescription "></label>
                 <textarea class="bg-white text-wrap  textarea text-black w-100 " name="getDescription" rows="3"
                           readonly></textarea>
-                <form method="POST" action="{{ path('app_messages_send') }}" class="form d-flex flex-column align-items-baseline">
+                <form method="POST" action="{{ path('app_messages_send') }}"
+                      class="form d-flex flex-column align-items-baseline">
                     <label for="toUser">Username</label>
                     <input type="text" name="toUser" id="toUser" readonly>
                     <label for="title">Title</label>
-                    <input type="text" name="title" id="title" readonly>
+                    <input type="text" name="title" id="title"  readonly>
                     <label for="description">Description</label>
-                    <textarea class="form-control textarea" id="description" name="description" rows="3"></textarea>
+                    <textarea class="form-control textarea" id="description" name="description" rows="3" required></textarea>
                     <button class="btn btn-success m-1" type="submit">Send</button>
                 </form>
 

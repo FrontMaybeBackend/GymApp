@@ -75,8 +75,11 @@ class FriendsController extends AbstractController
 
         if ($status->getStatus() === 'przyjęte') {
             $friends = new Friends();
+
+            $friends->setUsername($status->setSendero());
             $receiver->addFriend($friends);
-            $friends->setUsername($status->getSendero());
+
+
 
 
             $entityManager->persist($receiver);

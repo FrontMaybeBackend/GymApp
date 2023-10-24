@@ -11,14 +11,13 @@ document.addEventListener('DOMContentLoaded', function () {
             let testDiv = document.getElementById('test');
             let h6 = testDiv.querySelector('h6');
             let h5 = testDiv.querySelector('h5');
-            let h4 = testDiv.querySelector('h4');
-            let p = testDiv.querySelector("p");
-            let span = testDiv.querySelector('span');
+            let textarea = testDiv.querySelector('textarea');
+
 
 
             h6.textContent =  "Username: "  + userData.fromUser;
             h5.textContent = "Title: " + userData.title;
-            h4.textContent = "Description: " +  userData.description;
+            textarea.textContent = "Description: " +  userData.description;
 
             let usernameLabel = testDiv.querySelector('label[for="toUser"]');
             let titleLabel = testDiv.querySelector('label[for="title"]');

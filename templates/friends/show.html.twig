@@ -21,9 +21,9 @@
         <div id="test" class="container-fluid border-start text overflow-y-scroll">
             <h5 class="text-black">Friends</h5>
             <br>
-            {% for friend in friends %}
+            {% for friendData in friends %}
                 <div id="test2" class=" container-fluid border-white border-bottom d-flex justify-content-between">
-                    {{ friend.friends }}
+                    {{ friendData.friends }}
                     <button id="message" type="button" class="btn btn-dark" data-bs-toggle="messenger"
                             data-bs-target="#messenger">
                         <i class="far fa-envelope fa-lg"></i>

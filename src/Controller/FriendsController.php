@@ -79,9 +79,6 @@ class FriendsController extends AbstractController
             $friends->setUsername($status->setSendero());
             $receiver->addFriend($friends);
 
-
-
-
             $entityManager->persist($receiver);
             $entityManager->persist($friends);
             $entityManager->flush();

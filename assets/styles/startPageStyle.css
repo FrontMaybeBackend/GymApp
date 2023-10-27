@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("../../public/storage/bear logo who t 1.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.content{
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+{
+    color: #444;
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -12,6 +12,7 @@ import './styles/userIndexstyle.css';
 import './styles/friendsStyle.css';
 import './styles/messagesStyle.css';
 import './styles/registerStyle.css';
+import './styles/startPageStyle.css';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 

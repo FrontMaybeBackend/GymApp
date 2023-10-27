@@ -5,83 +5,35 @@
 {% block body %}
     {% include 'navbar/index.html.twig' %}
     {% block stylesheets %}
-        {{ encore_entry_link_tags('app') }}
+        {{  parent() }}
+        {{ encore_entry_link_tags('startPagestyle') }}
+
     {% endblock %}
 
     {% if not app.user %}
-<div class="container p-3 ">
-    <div class="row">
-        <div class="col">
-            <div class="card w-75">
-                <img class="card-img-top" src="{{  asset('storage/gymtraining.jpg') }}" height="150px" alt="Training">
-            <div class="card-body">
-                <p class="card-text ">Get your training to another level!</p>
-            </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card w-75">
-                <img class="card-img-top" src="{{  asset('storage/friendstraining.jpg') }}" height="150px" alt="Training">
-            <div class="card-body">
-                <p class="card-text">Added friends and train together!</p>
-            </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card  w-75">
-                <img class="card-img-top" src="{{ asset('storage/records.png') }}" height="150px" alt="Training">
-            <div class="card-body">
-                <p class="card-text">Make note with your personal records!</p>
-            </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card w-75">
-                <img class="card-img-top " src="{{ asset('storage/messages.webp') }}"  height="150px" alt="Training">
-            <div class="card-body">
-                <p class="card-text text-wrap">Exchange messages with your friends!</p>
-            </div>
-            </div>
-        </div>
-    </div>
-    </div>
-</div>
 
-<div class="container p-3 ">
-    <p>Statistics:</p>
-    <div class="row">
-        <div class="col">
-            <div class="card w-75 statistics">
-                <img class="card-img-top" src="{{  asset('storage/gymtraining.jpg') }}" height="150px" alt="Training">
-                <div class="card-body">
-                    <h5 class="card-title text-white">USERS</h5>
-                    <p class="card-text ">{{ numberOfUsers }}</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card w-75 statistics">
-                <img class="card-img-top" src="{{  asset('storage/gymtraining.jpg') }}" height="150px" alt="Training">
-                <div class="card-body">
-                    <h5 class="card-title text-white">PROGRAMS</h5>
-                    <p class="card-text ">{{ numberOfTrainings }}</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card w-75 statistics">
-                <img class="card-img-top" src="{{  asset('storage/gymtraining.jpg') }}" height="150px" alt="Training">
-                <div class="card-body">
-                    <h5 class="card-title text-white">PROGRAMS</h5>
-                    <p class="card-text ">level!</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
     {% endif %}
+<div class="container">
+    <div class="row">
+        <div class="col-8 content " >
+            <p>GET YOUR TRAINING TO ANOTHER LEVEL !</p>
+        </div>
+        <div class="col-4 " ></div>
+    </div>
+    </div>
 
-
-
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 content">
+                <p>GET YOUR TRAINING TO ANOTHER LEVEL !</p>
+            </div>
+            <div class="col-sm-4">  <p>GET YOUR TRAINING TO ANOTHER LEVEL !</p></div>
+        </div>
+        <div class="row">
+            <div class="col-sm">  <p>GET YOUR TRAINING TO ANOTHER LEVEL !</p></div>
+            <div class="col-sm">  <p>GET YOUR TRAINING TO ANOTHER LEVEL !</p></div>
+            <div class="col-sm">  <p>GET YOUR TRAINING TO ANOTHER LEVEL !</p></div>
+        </div>
+    </div>
 {% endblock %}

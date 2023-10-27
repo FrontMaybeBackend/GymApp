@@ -4,19 +4,9 @@
 
 {% block body %}
     {% include 'navbar/index.html.twig' %}
-    {% block stylesheets %}
-        {{ parent() }}
-        {{ encore_entry_link_tags('userIndexstyle') }}
 
-    {% endblock %}
-
-    {% block javascripts %}
-
-        {{ encore_entry_script_tags('app') }}
-
-    {% endblock %}
-    <table class="table  align-middle mb-0">
-        <thead class="bg-danger">
+    <table class="table align-middle mb-0 bg-white ">
+        <thead class="bg-light">
         <tr>
             <th>Id</th>
             <th>Avatar</th>
@@ -32,42 +22,35 @@
         {% for user in users %}
             <tr>
                 <td>{{ user.id }}</td>
+
                 <td>
-                    {% if user.avatar %}
-                        <img src="{{ asset('uploads/avatars/' ~ user.avatar) }}" alt="Avatar">
-                    {% else %}
+                    {%  if user.avatar%}
+                    <img src="{{  asset('uploads/avatars/' ~ user.avatar) }}" alt="Avatar">
+                    {%  else %}
                         <p>Brak</p>
                     {% endif %}
                 </td>
+
                 <td>{{ user.username }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.description }}</td>
                 <td>{{ user.workout }}</td>
                 <td>{{ user.trainingDays }}</td>
                 <td>
-                    <a id="user_show" class="text-white"
-                       href="{{ path('app_user_profile_show', {'username': user.username}) }}">SHOW PROFILE</a>
-                    {% if app.user != user %}
-                        {% set isFriend = false %}
-                        {% for friend in friends %}
-                            {% if friend.username == user.username %}
-                                {% set isFriend = true %}
-                            {% endif %}
-                        {% endfor %}
-                        {% if not isFriend %}
-                            <form action="{{ path('app_add_friends', {'id': user.id, 'username': user.username}) }}"
-                                  method="post">
-                                <button id="user_add" type="submit" class="text-white">ADD TO FRIENDS</button>
-                            </form>
-                        {% endif %}
+                    <a class="text-black" href="{{ path('app_user_profile_show', {'username': user.username}) }}"><p>Show Profile</a>
+                    {%  if app.user != user %}
+                    <form action="{{ path('app_add_friends', {'id': user.id, 'username': user.username}) }}" method="post">
+                        <button type="submit" class="text-black btn-info">Add to friends</button>
+                    </form>
                     {% endif %}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="10">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+
 {% endblock %}

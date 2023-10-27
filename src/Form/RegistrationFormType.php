@@ -24,7 +24,6 @@ class RegistrationFormType extends AbstractType
             ->add('username',TextType::class,[
                 'label'=>'Username',
                     'attr'=>[
-                        'placeholder'=>'Username',
                         'class'=>'form-control',
                     ],
                     'constraints'=>[
@@ -37,7 +36,6 @@ class RegistrationFormType extends AbstractType
             ->add('email',EmailType::class,[
                 'label'=>'Email',
                 'attr'=>[
-                    'placeholder'=>'Email',
                     'class'=>'form-control',
                 ],
                 'constraints'=>[
@@ -62,7 +60,6 @@ class RegistrationFormType extends AbstractType
                 // this is read and encoded in the controller
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password',
-                    'placeholder'=>'Password',
                     'class'=>'form-control'],
                 'constraints' => [
                     new NotBlank([
@@ -78,7 +75,8 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('register', SubmitType::class,[
                 'attr'=>[
-                    'class'=>'btn btn-dark',
+                    'class'=>'btn',
+                    'style'=>'display:flex; justify-content:center; align-items:center;'
                 ],
             ])
         ;

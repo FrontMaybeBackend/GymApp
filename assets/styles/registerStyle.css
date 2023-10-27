@@ -1,0 +1,50 @@
+#registerForm{
+    background-color: white;
+    width: 300px;
+    height: 400px;
+    position: relative;
+    transform: translate(-0%, 50%);
+}
+
+#register{
+    color: #000000;
+    font-family: 'Inter', sans-serif; font-weight: 900;
+    font-size: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.form-control{
+    background-color: #D9D9D9;
+}
+
+#signup{
+    color: #070707;
+    font-family: 'Inter', sans-serif; font-weight: 900;
+    font-size: 20px;
+}
+
+.btn{
+    color: #070707;
+    font-family: 'Inter', sans-serif; font-weight: 900;
+    font-size: 20px;
+    border: black solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+#button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.required{
+    display: flex;
+    justify-content: center;
+    padding: 2px;
+}
+
+
+

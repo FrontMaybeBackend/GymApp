@@ -96,10 +96,12 @@ class FriendsController extends AbstractController
 
         $results = $friendsRepository->findFriends($loggedInUserId);
 
+
         foreach ($results as $result) {
             $friendsData[] = [
                 'friends' => $result['friend_username'] // Używamy poprawnej nazwy klucza
             ];
+
         }
 
 

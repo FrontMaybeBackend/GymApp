@@ -28,6 +28,7 @@ Encore
     .addStyleEntry('userIndexstyle','/assets/styles/userIndexstyle.css')
     .addStyleEntry('friendsstyle', '/assets/styles/friendsStyle.css')
     .addStyleEntry('messagesstyle', '/assets/styles/messagesStyle.css')
+    .addStyleEntry('registerstyle', '/assets/styles/registerStyle.css')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()

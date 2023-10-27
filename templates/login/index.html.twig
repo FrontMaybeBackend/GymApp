@@ -26,7 +26,7 @@
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    <div id="loginForm" class=" d-flex justify-content-center align-items-center border border-dark border-4 rounded-3 " >
+    <div id="loginForm" class=" d-flex justify-content-center align-items-center border border-dark border-4 rounded-3 "style="background-image: url('{{ asset('storage/image0_0.jpg') }}'); background-size: cover;" >
     <form action="{{ path('app_login') }}" method="post" class="d-flex flex-column align-items-center">
         <p id="login" class="justify-content-center  p-3" > Login </p>
         <label class="text-dark p-3" for="username" >Username</label>

@@ -15,26 +15,26 @@
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
-
-    <div id="registerForm"
+    <div id="registerForm" style="background-image: url('{{ asset('storage/bear logo who t 1.jpg') }}'); background-size: cover;"
          class="container d-flex justify-content-center align-items-center border border-dark border-4 rounded-3">
         <div class="row">
-            <p id="register" class="d-flex justify-content-center align-items-center"> Register </p>
-            <div class="col d-flex justify-content-center align-items-center ">
+            <p id="register" class="d-flex justify-content-center align-items-center">Register</p>
+            <div class="col d-flex justify-content-center align-items-center">
                 {{ form_errors(registrationForm) }}
                 {{ form_start(registrationForm) }}
-                {{ form_row(registrationForm.username, ) }}
-                {{ form_row(registrationForm.email,) }}
+                {{ form_row(registrationForm.username) }}
+                {{ form_row(registrationForm.email) }}
                 {{ form_row(registrationForm.plainPassword, {
                     label: 'Password'
                 }) }}
                 {{ form_row(registrationForm.agreeTerms) }}
                 <div id="button">
-                {{ form_end(registrationForm) }}
-            </div>
+                    {{ form_end(registrationForm) }}
+                </div>
             </div>
         </div>
     </div>
+
 
 
 {% endblock %}

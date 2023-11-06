@@ -59,21 +59,19 @@ class FriendsRepository extends ServiceEntityRepository
         return $resultSet->fetchAllAssociative();
     }
 
-//    /**
-//     * @return Friends[] Returns an array of Friends objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('f')
-//            ->andWhere('f.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('f.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
+   /* /**
+     * @return Friends[] Returns an array of Friends objects
+     */
+   /* public function findByExampleField($value): array
+    {
+        return $this->createQueryBuilder('f')
+            ->andWhere('f.username= :username')
+            ->setParameter('username', $value)
+            ->getQuery()
+            ->getResult()
+        ;
+   }
+*/
 //    public function findOneBySomeField($value): ?Friends
 //    {
 //        return $this->createQueryBuilder('f')

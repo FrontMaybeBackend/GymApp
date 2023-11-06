@@ -39,20 +39,19 @@ class InvitationsRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Invitations[] Returns an array of Invitations objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('i')
-//            ->andWhere('i.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('i.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+        /*
+    /**
+     * @return Invitations[] Returns an array of Invitations objects
+
+    public function findFriendByStatus($value): array
+    {
+        return $this->createQueryBuilder('i')
+            ->andWhere('i.receiver_id = :id')
+            ->setParameter('receiver_id', $value)
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
+    }
 
 //    public function findOneBySomeField($value): ?Invitations
 //    {
@@ -63,4 +62,5 @@ class InvitationsRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+        */
 }

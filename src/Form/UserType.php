@@ -27,7 +27,7 @@ class UserType extends AbstractType
                 'label'=>'avatar (IMG FILE)',
                 'mapped'=>false,
                 'required'=>false,
-              /*  'constraints'=>[
+              'constraints'=>[
                     new Image([
                         'minWidth' => 50,
                         'maxWidth' => 100,
@@ -35,8 +35,6 @@ class UserType extends AbstractType
                         'maxHeight' => 100,
                     ])
                 ]
-              */
-
             ])
             ->add('workout', ChoiceType::class, [
                 'choices' => [

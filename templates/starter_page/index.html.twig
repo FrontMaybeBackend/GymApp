@@ -5,35 +5,30 @@
 {% block body %}
     {% include 'navbar/index.html.twig' %}
     {% block stylesheets %}
-        {{  parent() }}
+        {{ parent() }}
         {{ encore_entry_link_tags('startPagestyle') }}
 
     {% endblock %}
 
-    {% if not app.user %}
-
-
-    {% endif %}
-<div class="container">
-    <div class="row">
-        <div class="col-8 content " >
-            <p>GET YOUR TRAINING TO ANOTHER LEVEL !</p>
-        </div>
-        <div class="col-4 " ></div>
-    </div>
-    </div>
-
+    <style>
+        body {
+            background-image: url("{{ asset('storage/bear logo who t 1.jpg') }}");
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
     <div class="container">
-        <div class="row">
-            <div class="col-sm-8 content">
-                <p>GET YOUR TRAINING TO ANOTHER LEVEL !</p>
+        <div class="row ">
+            <div class="col-8 content  m-3 ">
+                CREATE TRAINING WITH YOUR PARTNER !
             </div>
-            <div class="col-sm-4">  <p>GET YOUR TRAINING TO ANOTHER LEVEL !</p></div>
-        </div>
-        <div class="row">
-            <div class="col-sm">  <p>GET YOUR TRAINING TO ANOTHER LEVEL !</p></div>
-            <div class="col-sm">  <p>GET YOUR TRAINING TO ANOTHER LEVEL !</p></div>
-            <div class="col-sm">  <p>GET YOUR TRAINING TO ANOTHER LEVEL !</p></div>
+            <div class="col-8 content  m-3">
+                ADD FRIENDS AND SEND MESSAGES !
+            </div>
+            <div class="col-8 content  m-3">
+                CREATE COLLABORATIVE PROJECTS !
+            </div>
         </div>
     </div>
+
 {% endblock %}

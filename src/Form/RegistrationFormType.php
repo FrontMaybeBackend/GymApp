@@ -75,7 +75,7 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('register', SubmitType::class,[
                 'attr'=>[
-                    'class'=>'btn',
+                    'class'=>'btn btn-reg',
                     'style'=>'display:flex; justify-content:center; align-items:center;'
                 ],
             ])

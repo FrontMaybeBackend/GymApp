@@ -99,9 +99,9 @@
                 </li>
                 {% if app.user %}
                             <form method="post"  action="{{path('app_logout')}}">
-                                <button class="btn btn-dark text-white" type="submit">Logout</button>
+                                <button class=" btn btn-dark text-white" type="submit">Logout</button>
                             </form>
-                    <a class ="btn btn-dark text-white h-25" href="{{ path('app_user_profile_show', { username: app.user.username }) }}"> {{ app.user.username }}</a>
+                    <a id="user_profile" class =" btn btn-dark text-white h-25" href="{{ path('app_user_profile_show', { username: app.user.username }) }}"> {{ app.user.username }}</a>
                 {% else %}
                 <li class="nav-item text-center mx-2 mx-lg-1">
                     <a class="nav-link" href="{{  path('app_login') }}">

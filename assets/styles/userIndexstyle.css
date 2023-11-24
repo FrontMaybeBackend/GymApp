@@ -19,8 +19,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    HEIGHT: 30px;
-    font-size: 12px;
     font-family: 'Inter', sans-serif;
+    height: 30px;
+    font-size: 12px;
     font-weight: 900;
 }

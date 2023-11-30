@@ -25,8 +25,6 @@ class UserProfileController extends AbstractController
         $isFriend = $user->getFriends($loggedUser);
 
 
-
-
         return $this->render('user_profile/index.html.twig', [
             'users' => $userRepository->findAll(),
             'friends' =>$isFriend ,

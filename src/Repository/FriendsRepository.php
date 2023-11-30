@@ -48,13 +48,12 @@ class FriendsRepository extends ServiceEntityRepository
         $conn = $this->getEntityManager()->getConnection();
 
         $sql = '
-                SELECT f.username AS friend_username
-                FROM user u
-                INNER JOIN friends_user fu ON u.id = fu.user_id
-                INNER JOIN friends f ON fu.friends_id = f.id
-                WHERE u.id = :id; ';
+        SELECT f.username AS friend_username
+        FROM friends_user fu
+        INNER JOIN friends f ON fu.friends_id = f.id
+        WHERE fu.user_id = :id; ';
 
-        $resultSet = $conn->executeQuery($sql,['id'=>$id]);
+        $resultSet = $conn->executeQuery($sql, ['id' => $id]);
 
         return $resultSet->fetchAllAssociative();
     }

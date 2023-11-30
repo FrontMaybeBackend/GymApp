@@ -48,7 +48,6 @@ class FriendsController extends AbstractController
             $invitations = new Invitations();
             $invitations->addSender($sender);
             $invitations->setSendero($userMain->getUserIdentifier());
-
             $invitations->setReceiver($receiver);
             $invitations->setStatus('oczekujące');
 
@@ -66,22 +65,24 @@ class FriendsController extends AbstractController
 
     //Ustawia znajomych w relacji
     #[Route('/friends/set/{id}', name: 'app_friends_set')]
-    public function set(int $id, EntityManagerInterface $entityManager): Response
+    public function set(int $id, EntityManagerInterface $entityManager, UserInterface $user): Response
     {
 
         $status = $entityManager->getRepository(Invitations::class)->find($id);
-        $receiver = $this->getUser();
-
+        $loggedUser = $this->getUser();
 
         if ($status->getStatus() === 'przyjęte') {
-            $friends = new Friends();
+            $newFriend = new Friends();
 
-            $friends->setUsername($status->setSendero());
-            $receiver->addFriend($friends);
+            $loggedUser->addFriend($newFriend);
+            $newFriend->setUsername($status->getSendero());
+            $newFriend->addUser($loggedUser);
 
-            $entityManager->persist($receiver);
-            $entityManager->persist($friends);
+            $entityManager->persist($newFriend);
+            $entityManager->persist($loggedUser);
             $entityManager->flush();
+
+
         }
         return $this->redirectToRoute('app_friends');
     }
@@ -98,15 +99,15 @@ class FriendsController extends AbstractController
 
         foreach ($results as $result) {
             $friendsData[] = [
-                'friends' => $result['friend_username'] // Używamy poprawnej nazwy klucza
+                'friends' => $result['friend_username']
             ];
         }
-
 
         return $this->render('friends/show.html.twig', [
             'friends' => $friendsData,
         ]);
     }
+
 
 
 }

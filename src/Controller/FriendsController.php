@@ -9,6 +9,8 @@ use App\Repository\FriendsRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Tools\Pagination\Paginator;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -89,11 +91,13 @@ class FriendsController extends AbstractController
 
 
     #[Route('/friends/show', name: 'app_friends_show', methods: 'GET')]
-    public function show(UserInterface $user, FriendsRepository $friendsRepository)
+    public function show(UserInterface $user, FriendsRepository $friendsRepository, PaginatorInterface $paginator, Request $request)
     {
         $loggedInUserId = $user->getId();
 
+
         $friendsData = [];
+
 
         $results = $friendsRepository->findFriends($loggedInUserId);
 
@@ -103,11 +107,17 @@ class FriendsController extends AbstractController
             ];
         }
 
+        $pagination = $paginator->paginate(
+            $friendsData,
+            $request->query->getInt('page', 1),
+            6
+        );
+
+
         return $this->render('friends/show.html.twig', [
-            'friends' => $friendsData,
+            'friends' => $pagination,
         ]);
     }
-
 
 
 }

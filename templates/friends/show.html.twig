@@ -17,19 +17,30 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
 
-    <div id="friendsDiv" class="container-fluid d-flex justify-content-end p-3 ">
-        <div id="test" class="container-fluid border-start text overflow-y-scroll">
-            <h5 class="text-black">Friends</h5>
-            <br>
-            {% for friendData in friends %}
-                <div id="test2" class=" container-fluid border-white border-bottom d-flex justify-content-between">
-                    {{ friendData.friends }}
-                    <button id="message" type="button" class="btn btn-dark" data-bs-toggle="messenger"
-                            data-bs-target="#messenger">
-                        <i class="far fa-envelope fa-lg"></i>
-                    </button>
+    <div id="friendsDiv" class="container-fluid d-flex justify-content-center p-3">
+        {% for friendData in friends %}
+            <div class="card  text-nowrap h-50 w-75 m-1">
+                <div class="card-body text-black bg-white">
+                    <h5 class="card-title">{{ friendData.friends }}</h5>
+                    <h6 class="card-subtitle mb-2 text-info">Friends</h6>
+                    <a href="#" class="card-link">
+                        <button id="message" type="button" class="btn btn-dark" data-bs-toggle="messenger"
+                                data-bs-target="#messenger">
+                            <i class="far fa-envelope fa-lg"></i>
+                        </button>
+                    </a>
                 </div>
-            {% endfor %}
-        </div>
+            </div>
+        {% endfor %}
     </div>
+    <div class="pagination d-flex justify-content-end text-info">
+        {{ knp_pagination_render(
+            friends,
+            '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig'
+        ) }}
+    </div>
+
+
+
+
 {% endblock %}

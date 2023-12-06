@@ -7,7 +7,6 @@
  {% endblock %}
 {% block body %}
     {% include 'navbar/index.html.twig' %}
-
     <table class="table align-middle mb-0 bg-white ">
         <thead class="bg-light">
         <tr>
@@ -55,5 +54,11 @@
         {% endfor %}
         </tbody>
     </table>
+    <div class="pagination d-flex justify-content-end text-info">
+        {{ knp_pagination_render(
+            users,
+            '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig'
+        ) }}
+    </div>
 
 {% endblock %}

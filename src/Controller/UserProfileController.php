@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\FriendsRepository;
 use App\Repository\UserRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,16 +19,23 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class UserProfileController extends AbstractController
 {
     #[Route('/', name: 'app_user_profile_index', methods: ['GET'])]
-    public function index(UserRepository $userRepository, FriendsRepository $friendsRepository,UserInterface $user): Response
+    public function index(UserRepository $userRepository, FriendsRepository $friendsRepository, UserInterface $user, PaginatorInterface $paginator, Request $request): Response
     {
         $loggedUser = $user->getUserIdentifier();
 
-        $isFriend = $user->getFriends($loggedUser);
+        // $isFriend = $user->getFriends();
+
+        $getAllUsers = $userRepository->findAll();
+
+        $pagination = $paginator->paginate(
+            $getAllUsers,
+            $request->query->getInt('page', 1),
+            3
+        );
 
 
         return $this->render('user_profile/index.html.twig', [
-            'users' => $userRepository->findAll(),
-            'friends' =>$isFriend ,
+            'users' => $pagination,
         ]);
     }
 
@@ -37,17 +45,16 @@ class UserProfileController extends AbstractController
     {
 
         $getAvatar = $user->getAvatar();
-        $getFullPath = $this->getParameter('avatars_directory'). '/' . $getAvatar;
+        $getFullPath = $this->getParameter('avatars_directory') . '/' . $getAvatar;
         return $this->render('user_profile/show.html.twig', [
             'user' => $user,
-            'avatar'=>$getFullPath,
+            'avatar' => $getFullPath,
         ]);
     }
 
 
-
     #[Route('/{id}/edit', name: 'app_user_profile_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, User $user, UserRepository $userRepository,SluggerInterface $slugger): Response
+    public function edit(Request $request, User $user, UserRepository $userRepository, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -75,7 +82,7 @@ class UserProfileController extends AbstractController
             }
 
 
-            $user->setPassword(password_hash($user->getPassword(),PASSWORD_DEFAULT));
+            $user->setPassword(password_hash($user->getPassword(), PASSWORD_DEFAULT));
             $userRepository->save($user, true);
 
             return $this->redirectToRoute('app_user_profile_index', [], Response::HTTP_SEE_OTHER);
@@ -90,7 +97,7 @@ class UserProfileController extends AbstractController
     #[Route('/{id}', name: 'app_user_profile_delete', methods: ['POST'])]
     public function delete(Request $request, User $user, UserRepository $userRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
             $userRepository->remove($user, true);
         }
 

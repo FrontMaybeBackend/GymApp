@@ -23,7 +23,7 @@
                 <div class="card-body text-black bg-white">
                     <h5 class="card-title">{{ friendData.friends }}</h5>
                     <h6 class="card-subtitle mb-2 text-info">Friends</h6>
-                    <a href="#" class="card-link">
+                    <a href="{{ path('app_messages_new' ,{'username': friendData.friends}) }}" class="card-link">
                         <button id="message" type="button" class="btn btn-dark" data-bs-toggle="messenger"
                                 data-bs-target="#messenger">
                             <i class="far fa-envelope fa-lg"></i>

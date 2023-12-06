@@ -4,6 +4,7 @@ namespace App\Controller;
 
 
 use App\Entity\Messages;
+use App\Repository\FriendsRepository;
 use App\Repository\MessagesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -37,17 +38,27 @@ class MessagesController extends AbstractController
         return $this->render('starter_page/index.html.twig');
     }
 
-    #[Route('/messages/index', name:'app_messages_get', methods: 'GET')]
+    #[Route('/messages/index', name: 'app_messages_get', methods: 'GET')]
     public function index(MessagesRepository $messagesRepository, UserInterface $user): Response
     {
         $loggedUser = $user->getUsername();
 
-        $message = $messagesRepository->findBy(['toUser'=> $loggedUser]);
+        $message = $messagesRepository->findBy(['toUser' => $loggedUser]);
 
         return $this->render('messages/index.html.twig', [
             'message' => $message
         ]);
 
+    }
+    #[Route('messages/new/{username}', name:'app_messages_new', methods: 'GET')]
+    public function new(MessagesRepository $messagesRepository, UserInterface $user,Request $request): Response
+    {
+        $loggedUser = $user->getId();
 
+        $username = $request->attributes->get('username');
+
+        return $this->render('messages/new.html.twig',[
+            'username'=>$username,
+        ]);
     }
 }

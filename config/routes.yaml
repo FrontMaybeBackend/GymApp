@@ -71,3 +71,8 @@ app_messages_get:
     path : '/messages/index'
     methods: GET
     controller: App\Controller\MessagesController::index
+
+app_messages_new:
+    path: '/messages/index/new/{username}'
+    methods: GET
+    controller: App\Controller\MessagesController::new

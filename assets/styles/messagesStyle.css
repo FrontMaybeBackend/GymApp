@@ -7,11 +7,19 @@
 
 
 #leftDiv {
-    background-color: #065BA9;
+
     overflow-y: scroll;
     height: 420px;
 }
 
+#myMessages {
+    overflow-y: scroll;
+    height: 420px;
+}
+
+#myMessages::-webkit-scrollbar {
+    width: 0.2em;
+}
 #leftDiv::-webkit-scrollbar {
     width: 0.2em;
 }

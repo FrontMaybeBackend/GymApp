@@ -44,9 +44,11 @@ class MessagesController extends AbstractController
         $loggedUser = $user->getUsername();
 
         $message = $messagesRepository->findBy(['toUser' => $loggedUser]);
+        $sendMessages = $messagesRepository->findBy(['fromUser' => $loggedUser]);
 
         return $this->render('messages/index.html.twig', [
-            'message' => $message
+            'message' => $message,
+            'sendMessages' => $sendMessages,
         ]);
 
     }
